@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Order online - delivery all over Egypt">
+<meta property="og:title" content="My Shop">
+<meta property="og:description" content="Order online - delivery all over Egypt">
+<meta name="theme-color" content="#14213d">
+<title>My Shop</title>
+<style>
+:root{--bg:#f5f3ef;--card:#fff;--tx:#14213d;--mut:#7a7f8c;--ac:#b8892b;--ac2:#e0b657;--navy:#14213d;--bd:#e7e3da;--ok:#2a9d5c;--no:#d64545;--sh:0 10px 30px rgba(20,33,61,.08);box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1424;--card:#171f35;--tx:#eef0f6;--mut:#8f97ad;--ac:#e0b657;--bd:#2a3350;--sh:0 10px 30px rgba(0,0,0,.45)}}
+:root[data-theme="dark"]{--bg:#0e1424;--card:#171f35;--tx:#eef0f6;--mut:#8f97ad;--ac:#e0b657;--bd:#2a3350;--sh:0 10px 30px rgba(0,0,0,.45)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5;padding-bottom:env(safe-area-inset-bottom,20px)}
+.top{background:linear-gradient(135deg,#0e1a33,#1d2f5a);color:#fff;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top,0px));position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between}
+.top h1{margin:0;font-family:Georgia,serif;font-size:22px;font-weight:600}
+.top h1 span{color:var(--ac2)}
+.top p{margin:0;opacity:.75;font-size:11px}
+.hadm{display:none;gap:6px}.hadm button{padding:6px 10px;background:rgba(255,255,255,.15);color:#fff}
+nav{display:flex;gap:4px;justify-content:center;flex-wrap:wrap;max-width:700px;margin:14px auto 0;background:var(--card);padding:6px;border-radius:99px;box-shadow:var(--sh);position:relative;z-index:10}
+nav button{background:transparent;color:var(--tx);border-radius:99px;padding:8px 14px;font-weight:600;font-size:13px;border:0;cursor:pointer}
+nav button.on{background:var(--navy);color:var(--ac2)}
+@media (prefers-color-scheme:dark){nav button.on{background:var(--ac);color:#14213d}}
+main{max-width:1050px;margin:auto;padding:20px 14px 60px}
+button,input,textarea,select{font:inherit;color:inherit}
+button{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#14213d;border:0;border-radius:10px;padding:10px 16px;cursor:pointer;font-weight:700}
+button{position:relative;overflow:hidden;transition:transform .15s,box-shadow .2s,filter .2s}
+button:not(.ghost):not(.del):not(.ok):hover{box-shadow:0 6px 16px rgba(184,137,43,.35);filter:brightness(1.05)}
+button:active{transform:scale(.95)}
+.rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.5);transform:scale(0);animation:rip .6s ease-out;pointer-events:none}
+@keyframes rip{to{transform:scale(2.6);opacity:0}}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pop{0%{transform:scale(.85);opacity:0}60%{transform:scale(1.04)}100%{transform:scale(1);opacity:1}}
+@keyframes hop{0%,100%{transform:translateY(0)}40%{transform:translateY(-6px) scale(1.2)}}
+@keyframes bump{0%,100%{transform:scale(1)}40%{transform:scale(1.25)}}
+section:not(.hide){animation:up .3s ease both}
+.modal:not(.hide) .box{animation:pop .3s ease both}
+.card{transition:transform .25s,box-shadow .25s;animation:up .45s ease both}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(20,33,61,.16)}
+.card .im img{transition:transform .5s}.card:hover .im img{transform:scale(1.07)}
+.card:nth-child(2){animation-delay:.05s}.card:nth-child(3){animation-delay:.1s}.card:nth-child(4){animation-delay:.15s}.card:nth-child(n+5){animation-delay:.2s}
+button.okb{background:var(--ok);color:#fff}
+.bump{animation:bump .4s}
+.fly{position:fixed;z-index:80;font-size:26px;pointer-events:none;transition:transform .65s cubic-bezier(.5,-.2,.8,.6),opacity .65s}
+.bd{position:absolute;top:-6px;right:-12px;min-width:16px;height:16px;padding:0 4px;border-radius:99px;background:var(--no);color:#fff;font-size:10px;font-style:normal;font-weight:700;line-height:16px;text-align:center;animation:pop .3s}
+.hadm button{position:relative}.hadm .bd{top:1px;right:1px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}button:disabled{opacity:.5}
+.authf{display:flex;flex-direction:column;gap:6px;text-align:start}
+.authf label.l{font-weight:600;font-size:14px}
+.inputForm{border:1.5px solid var(--bd);border-radius:10px;height:50px;display:flex;align-items:center;padding-inline:12px;gap:8px;background:var(--bg);transition:.2s ease-in-out;margin-bottom:6px}
+.inputForm:focus-within{border-color:var(--ac)}
+.inputForm svg{flex:none;fill:var(--mut)}
+.inputForm input{border:0;background:transparent;margin:0;padding:0 4px;height:100%;border-radius:0;outline:none;box-shadow:none}
+.authf .eye{cursor:pointer}
+.authf .r2{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px;margin:4px 0 8px}
+.authf .r2 input{width:auto;margin:0 4px}
+.authf .sp{color:var(--ac);font-weight:600;cursor:pointer;background:none;border:0;padding:0;box-shadow:none;font-size:inherit}
+.authf .sub{height:50px;font-size:15px;margin:6px 0 4px}
+.authf .pp{text-align:center;font-size:14px;margin:6px 0}
+.authf .line{color:var(--mut);display:flex;align-items:center;gap:10px}.authf .line::before,.authf .line::after{content:"";flex:1;height:1px;background:var(--bd)}
+.authf .gbtn{height:50px;display:flex;align-items:center;justify-content:center;gap:10px;background:var(--card);color:var(--tx);border:1px solid var(--bd);font-weight:600;width:100%}
+.lksw{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.lksw label{position:relative;display:inline-block;width:96px;height:48px;cursor:pointer;flex:none}
+.lksw input{position:absolute;opacity:0;width:0;height:0;margin:0}
+.lksw .tr{position:absolute;inset:0;background:#fb7185;border-radius:999px;box-shadow:0 2px 6px rgba(0,0,0,.25);transition:background .3s}
+.lksw .tr::after{content:"";position:absolute;top:4px;left:4px;width:40px;height:40px;border-radius:50%;background:#f9fafb;transition:transform .3s}
+.lksw input:checked+.tr{background:#10b981}
+.lksw input:checked+.tr::after{transform:translateX(48px)}
+.lksw label:hover .tr::after{filter:brightness(.96)}
+.lksw .ic{position:absolute;top:4px;width:40px;height:40px;z-index:2;pointer-events:none;fill:#111827;transition:opacity .3s}
+.lksw .i1{left:4px}.lksw .i2{left:52px}
+.lksw input:checked~.i1{opacity:0}.lksw input:not(:checked)~.i2{opacity:0}
+.otp-wrap{position:relative;overflow:hidden;border-radius:22px;padding:26px 14px;background:radial-gradient(120% 80% at 0% 0%,#8a6420 0,transparent 55%),radial-gradient(90% 70% at 100% 100%,#4a3410 0,transparent 55%),linear-gradient(135deg,#09090b,#1b1710 55%,#09090b);color:#fff;direction:ltr;text-align:center}
+.otp-wrap::before{content:"";position:absolute;inset:-40%;background:repeating-linear-gradient(115deg,transparent 0 70px,rgba(224,182,87,.13) 70px 74px,transparent 74px 150px);transform:rotate(8deg);pointer-events:none}
+.otp-card{position:relative;border-radius:20px;padding:26px 16px 18px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 50px rgba(0,0,0,.45);transition:background .8s,border-color .8s;overflow:hidden}
+.otp-card.done{background:radial-gradient(120% 90% at 50% 100%,rgba(34,197,94,.22),rgba(255,255,255,.05) 70%);border-color:rgba(34,197,94,.35)}
+.otp-ic{width:38px;height:38px;margin:0 auto 10px;border-radius:11px;display:grid;place-items:center;color:#f5c518;background:rgba(245,197,24,.1);border:1px solid rgba(245,197,24,.45)}
+.otp-ic.g{color:#22c55e;background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.5)}
+.otp-ic svg{width:19px;height:19px}
+.otp-t{margin:0;font-size:22px;font-weight:800;color:#fff}.otp-t span{color:#f5c518}.otp-t span.g{color:#22c55e}
+.otp-s{margin:6px 0 0;font-size:13px;color:rgba(255,255,255,.65);word-break:break-word}
+.otp-st{position:relative;height:120px;margin:16px 0 4px;display:flex;align-items:center;justify-content:center}
+.otp-boxes{display:flex;gap:6px;width:100%;justify-content:center;direction:ltr}
+.otp-in{flex:1;max-width:46px;min-width:0;height:54px;margin:0!important;padding:0!important;text-align:center;font-size:22px;font-weight:700;color:#fff!important;background:rgba(0,0,0,.35)!important;border:1.5px solid rgba(255,255,255,.2)!important;border-radius:12px!important;outline:none;transition:.2s}
+.otp-in:focus{border-color:#f5c518!important;box-shadow:0 0 0 3px rgba(245,197,24,.2),0 0 14px rgba(245,197,24,.35)}
+.otp-orb{position:absolute;left:50%;top:50%;width:0;height:0}
+.otp-tile{position:absolute;display:grid;place-items:center;font-size:22px;font-weight:700;color:#fff;background:rgba(10,10,12,.9);border:1.5px solid #f59e6b;border-radius:12px;box-shadow:0 0 14px rgba(245,120,70,.5)}
+.otp-ring{position:absolute;left:50%;top:50%;width:0;height:0;opacity:0;border:2px solid #22c55e;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 18px rgba(34,197,94,.55)}
+.otp-sq{position:absolute;left:50%;top:50%;width:38px;height:38px;opacity:0;border:2px solid #22c55e;border-radius:10px;background:rgba(10,10,12,.85);display:grid;place-items:center}
+.otp-sq i{width:4px;height:4px;border-radius:50%;background:#fff}
+.otp-ok{position:absolute;left:50%;top:50%;width:50px;height:50px;opacity:0;border:2.5px solid #22c55e;border-radius:12px;background:rgba(10,10,12,.85);display:grid;place-items:center;color:#fff;transform:translate(-50%,-50%)}
+.otp-ok svg{width:26px;height:26px}
+.otp-m{min-height:20px;margin:4px 0 6px;font-size:13px;color:rgba(255,255,255,.7)}.otp-m.err{color:#fb7185}.otp-m.ok{color:#86efac}
+.otp-rs{margin:0 0 12px;font-size:12px;color:rgba(255,255,255,.55)}
+.otp-rs button{background:none!important;border:0!important;box-shadow:none!important;padding:0 2px;color:#f5c518!important;font-weight:700;font-size:12px}
+.otp-rs button:disabled{opacity:.8;cursor:default}
+.otp-btn{width:100%;height:46px;border-radius:12px;border:0;font-weight:800;font-size:15px;color:#1a1405!important;background:linear-gradient(90deg,#c9a82a,#e6c449)!important;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .5s}
+.otp-btn:disabled{opacity:.9}
+.otp-btn.okk{background:linear-gradient(90deg,#16a34a,#34d399)!important;color:#fff!important}
+.otp-sp{width:15px;height:15px;border:2px solid rgba(26,20,5,.35);border-top-color:#1a1405;border-radius:50%;animation:otpsp .8s linear infinite}
+@keyframes otpsp{to{transform:rotate(360deg)}}
+.otp-alt{margin-top:10px}.otp-alt button{background:none!important;border:0!important;box-shadow:none!important;color:rgba(255,255,255,.6)!important;font-size:13px}
+button.ghost{background:transparent;color:var(--tx);border:1px solid var(--bd)}
+button.del{background:var(--no);color:#fff}button.ok{background:var(--ok);color:#fff}
+label{display:block;font-size:13px;font-weight:600;color:var(--mut);margin-top:8px}
+input,textarea,select{width:100%;padding:11px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);margin:4px 0 8px;outline:none}
+input:focus,textarea:focus{border-color:var(--ac)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+h2.sec{font-family:Georgia,serif;font-size:18px;margin:14px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--bd)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+@media(min-width:600px){.grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}}
+.card{background:var(--card);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--sh)}
+.card .im{aspect-ratio:1;background:var(--bd);overflow:hidden}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.card .b{padding:12px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{margin:0;font-size:16px;font-family:Georgia,serif}
+.price{color:var(--ac);font-weight:800;font-size:17px}
+.mut{color:var(--mut);font-size:13px}
+.box{background:var(--card);border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:var(--sh)}
+.box h2{margin:0 0 12px;font-family:Georgia,serif;font-size:20px}
+.hide{display:none!important}
+.dc{display:flex;gap:8px;margin-top:10px}.dc input{margin:0;text-transform:uppercase}
+.dmsg{font-size:12px;margin:6px 0 0;min-height:16px}.dmsg.ok{color:var(--ok)}.dmsg.no{color:var(--no)}
+.row{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--bd)}
+.row:last-child{border-bottom:0}
+.tag{padding:4px 10px;border-radius:99px;font-size:11px;font-weight:700;color:#fff;background:var(--mut);white-space:nowrap}
+.tag.placed{background:#6c757d}.tag.confirmed{background:#2f6fdb}.tag.shipped{background:#7b3fe4}.tag.out{background:#e8890c}.tag.delivered{background:var(--ok)}.tag.cancelled{background:var(--no)}
+.code{font-family:monospace;font-weight:700;letter-spacing:1px;color:var(--ac)}
+.cols{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:768px){.cols{grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}}
+.thumb{width:40px;height:40px;border-radius:6px;object-fit:cover;background:var(--bd);margin-right:8px}
+.tl{display:flex;margin:14px 0 6px;overflow-x:auto;padding-bottom:4px}
+.tl div{flex:1;text-align:center;font-size:10px;color:var(--mut);position:relative;min-width:70px}
+.tl div:before{content:"";display:block;width:14px;height:14px;border-radius:50%;background:var(--bd);margin:0 auto 4px;position:relative;z-index:1}
+.tl div:after{content:"";position:absolute;top:6px;left:-50%;width:100%;height:2px;background:var(--bd)}
+.tl div:first-child:after{display:none}
+.tl div.on{color:var(--tx);font-weight:600}.tl div.on:before,.tl div.on:after{background:var(--ok)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.chips button{padding:6px 10px;font-size:12px}
+.sbtn{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.sbtn button{padding:6px 10px;font-size:12px}
+.modal{position:fixed;inset:0;background:rgba(5,10,25,.7);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50}
+.modal .box{width:100%;max-width:360px;margin:0;text-align:center}
+.big{font-size:24px;margin:8px 0}
+.card .im{position:relative;cursor:pointer}
+.card h3{cursor:pointer}
+.badge{position:absolute;right:8px;bottom:8px;background:rgba(20,33,61,.8);color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:99px}
+.pv{max-width:520px!important;padding:14px!important;text-align:start!important;position:relative;max-height:94vh;overflow-y:auto}
+.pv .x{position:absolute;top:10px;right:10px;z-index:5;width:34px;height:34px;padding:0;border-radius:50%;background:rgba(20,33,61,.75);color:#fff;font-size:16px}
+.gal{position:relative;aspect-ratio:1;background:var(--bd);border-radius:12px;overflow:hidden;touch-action:pan-y}
+.gal img{width:100%;height:100%;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none}
+.gal .nv{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;padding:0;border-radius:50%;background:rgba(20,33,61,.65);color:#fff;font-size:20px;line-height:1}
+.gal .pr{left:8px}.gal .nx{right:8px}
+.gal .ct{position:absolute;left:8px;bottom:8px;background:rgba(20,33,61,.75);color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:99px}
+.ths{display:flex;gap:8px;margin:10px 0;overflow-x:auto;padding-bottom:4px}
+.ths img{width:56px;height:56px;flex:none;object-fit:cover;border-radius:8px;border:2px solid transparent;cursor:pointer;opacity:.6}
+.ths img.on{border-color:var(--ac);opacity:1}
+.pv h3{margin:4px 0;font-family:Georgia,serif;font-size:20px}
+.pv .acts{display:flex;gap:8px;margin-top:12px}.pv .acts button{flex:1}
+footer{max-width:1050px;margin:0 auto;padding:18px 14px 30px;text-align:center;color:var(--mut);font-size:13px;border-top:1px solid var(--bd)}
+footer a{color:var(--ac);text-decoration:none;font-weight:600}
+#bnav{display:none;position:fixed;left:10px;right:10px;bottom:calc(8px + env(safe-area-inset-bottom,0px));z-index:45;background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:6px;gap:4px;box-shadow:0 10px 30px rgba(20,33,61,.22)}
+#bnav button{flex:1;background:transparent;color:var(--mut);border-radius:16px;padding:7px 2px;font-size:11px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:2px;transition:background .25s,color .25s,transform .15s}
+#bnav button b{position:relative;display:block}
+#bnav button.on{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#14213d}
+#bnav button.on b{animation:hop .4s}
+#bnav .rip{background:rgba(184,137,43,.35)}
+#bnav button b{font-size:20px;line-height:1}
+@media(max-width:767px){nav{display:none}.hadm{display:flex}#bnav{display:flex}main{padding-bottom:100px}footer{padding-bottom:100px}#toast{bottom:96px}}
+.tag.requested{background:#e8890c}.tag.approved{background:var(--ok)}.tag.rejected{background:var(--no)}
+#toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#14213d;color:#fff;padding:10px 18px;border-radius:99px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:60;max-width:90%;font-size:13px;text-align:center}
+#toast.on{opacity:1}
+</style>
+</head>
+<body>
+<div class="top"><div><h1>MY <span>SHOP</span></h1><p id="net">● Connecting...</p></div><button id="langBtn" onclick="toggleLang()" style="padding:6px 12px;background:rgba(255,255,255,.15);color:#fff">العربية</button><button id="hdrOut" onclick="acctOut()" style="display:none;padding:6px 12px;background:rgba(255,255,255,.15);color:#fff">Log out</button><div class="hadm"><button onclick="switchView('admin')">🔒<i id="ac2" class="bd hide"></i></button><button onclick="switchView('orders')">📦</button></div></div>
+<nav>
+  <button onclick="switchView('shop')" id="nav-shop" class="on">Shop</button>
+  <button onclick="switchView('cart')" id="nav-cart">Cart (<span id="cc">0</span>)</button>
+  <button onclick="switchView('mine')" id="nav-mine">My orders</button>
+  <button onclick="switchView('acct')" id="nav-acct">👤 Sign in</button>
+  <button onclick="switchView('dot')" id="nav-dot">⭐ Dot</button>
+  <button onclick="switchView('help')" id="nav-help">Complaints</button>
+  <button onclick="switchView('admin')" id="nav-admin" class="lock">🔒 Admin <span id="ac"></span></button>
+  <button onclick="switchView('orders')" id="nav-orders" class="lock">🔒 Orders <span id="oc"></span></button>
+</nav>
+<main>
+  <div id="msg" class="box hide"></div>
+  <div id="dotMini" class="box hide" style="display:none;cursor:pointer" onclick="switchView('dot')"></div>
+  <section id="v-shop"><input id="shopQ" placeholder="Search products..." oninput="renderShop()"><div id="catChips" style="display:flex;gap:6px;flex-wrap:wrap;margin:8px 0"></div><div class="grid" id="grid"></div><p class="mut" id="empty" style="text-align:center;margin-top:20px"></p></section>
+
+  <section id="v-cart" class="hide cols">
+    <div class="box">
+      <h2>Your cart</h2>
+      <div id="cartList"></div>
+      <div class="dc"><input id="dCode" placeholder="Enter discount code" autocapitalize="characters"><button id="dBtn" onclick="applyDiscount()">Apply</button></div>
+      <p class="dmsg" id="dMsg"></p>
+      <div class="row hide" id="discRow" style="color:var(--ok)"><span id="discLbl">Discount</span><span id="discAmt"></span></div>
+      <div class="row" style="margin-top:8px"><span>Delivery Fee</span><span id="shipAmt">80.00 EGP</span></div>
+      <h3>Total: <span id="total">0.00</span> EGP</h3>
+    </div>
+    <div class="box">
+      <h2>Checkout</h2>
+      <div class="f"><label>Full name *</label><input id="cName"></div>
+      <div class="f"><label>Phone number *</label><input id="cPhone" type="tel"></div>
+      <div class="f"><label>Email (Optional)</label><input id="cEmail" type="email"></div>
+      <h2 class="sec">Delivery address</h2>
+      <div class="g2">
+        <div class="f"><label>City / Governorate *</label><select id="cCity" onchange="fillAreas()"><option value="">Select city…</option></select></div>
+        <div class="f"><label>Area / District *</label><select id="cArea" onchange="areaChanged()"><option value="">Select city first</option></select></div>
+        <div class="f hide" id="areaOtherBox" style="grid-column:1/-1"><label>Write your area *</label><input id="cAreaOther" maxlength="100"></div>
+        <div class="f"><label>Street *</label><input id="cStreet"></div>
+        <div class="f"><label>Building Name</label><input id="cBName"></div>
+        <div class="f"><label>Building No *</label><input id="cBNo"></div>
+        <div class="f"><label>Floor *</label><input id="cFloor"></div>
+        <div class="f"><label>Apt *</label><input id="cApt"></div>
+      </div>
+      <div class="f"><label>Delivery Notes</label><input id="cNotes" placeholder="Landmark, etc."></div>
+      <div class="f"><label>Payment Method *</label>
+        <select id="cPay" onchange="togglePayProof()">
+          <option value="cod">Cash on Delivery (COD)</option>
+          <option value="wallet">Vodafone Cash / InstaPay</option>
+        </select>
+      </div>
+      <div class="f hide" id="proofBox">
+        <div class="box" id="payInfo" style="margin:6px 0;padding:12px;text-align:center"></div>
+        <label>Upload Payment Screenshot *</label>
+        <input id="cProof" type="file" accept="image/*">
+      </div>
+      <button id="orderBtn" onclick="placeOrder()" style="width:100%;margin-top:10px">Place order</button>
+    </div>
+  </section>
+
+  <section id="v-acct" class="hide"><div id="acctBody"></div></section>
+
+  <section id="v-dot" class="hide">
+    <div class="box"><h2>⭐ Dot Rewards</h2><div id="dotBody"></div></div>
+  </section>
+
+  <section id="v-mine" class="hide">
+    <div class="box"><h2>Track an order</h2><div style="display:flex;gap:8px"><input id="tCode" placeholder="ORD-K7M2QX9A4B" style="margin:0"><button onclick="trackCode()">Track</button></div></div>
+    <div id="mineList"></div>
+  </section>
+
+  <section id="v-help" class="hide">
+    <div class="box"><h2>Complaints</h2>
+      <div class="f"><label>Name *</label><input id="kName"></div>
+      <div class="f"><label>Phone *</label><input id="kPhone" type="tel"></div>
+      <div class="f"><label>Order code (optional)</label><input id="kCode" placeholder="ORD-K7M2QX9A4B"></div>
+      <div class="f"><label>Your complaint *</label><textarea id="kMsg" rows="4"></textarea></div>
+      <button id="kBtn" onclick="sendComplaint()" style="width:100%;margin-top:6px">Send</button>
+    </div>
+  </section>
+
+  <section id="v-admin" class="hide">
+    <div class="box lksw"><div><b id="lkTxt">Admin ON</b><div class="mut" style="font-size:13px">Switch off to lock the admin panel</div></div>
+      <label><input type="checkbox" id="lockSw" checked onchange="lockSwitch(this)"><span class="tr"></span>
+        <svg class="ic i1" viewBox="0 0 100 100"><path d="M30,46V38a20,20,0,0,1,40,0v8a8,8,0,0,1,8,8V74a8,8,0,0,1-8,8H30a8,8,0,0,1-8-8V54A8,8,0,0,1,30,46Zm32-8v8H38V38a12,12,0,0,1,24,0Z" fill-rule="evenodd"/></svg>
+        <svg class="ic i2" viewBox="0 0 100 100"><path d="M50,18A19.9,19.9,0,0,0,30,38v8a8,8,0,0,0-8,8V74a8,8,0,0,0,8,8H70a8,8,0,0,0,8-8V54a8,8,0,0,0-8-8H38V38a12,12,0,0,1,23.6-3,4,4,0,1,0,7.8-2A20.1,20.1,0,0,0,50,18Z"/></svg>
+      </label></div>
+    <div class="box"><h2>👥 Sign-ups <span id="suc" class="mut"></span></h2><div id="suList" class="mut">No sign-ups yet.</div></div>
+    <div class="box"><h2>Complaints <span id="kc" class="mut"></span></h2><div id="kList"></div></div>
+    <div class="cols">
+      <div class="box">
+        <h2>Add item</h2>
+        <div class="f"><label>Name *</label><input id="pName"></div>
+        <div class="f"><label>Price *</label><input id="pPrice" type="number" step="0.01"></div>
+        <div class="f"><label>Quantity in stock (empty = unlimited)</label><input id="pStock" type="number" min="0" step="1"></div>
+        <div class="f"><label>Description</label><textarea id="pDesc" rows="2"></textarea></div>
+        <div class="f"><label>Category (optional, e.g. Shoes)</label><input id="pCat" maxlength="40"></div>
+        <div class="f"><label>Images (you can pick several, max 6)</label><input id="pImg" type="file" accept="image/*" multiple><div id="pPrev" class="ths"></div></div>
+        <button id="addBtn" onclick="addItem()" style="width:100%;margin-top:6px">Add item</button>
+      </div>
+      <div class="box">
+        <h2>Security & Password</h2>
+        <div class="f"><label>Current Password</label><input id="oldPw" type="password"></div>
+        <div class="f"><label>New Password</label><input id="newPw" type="password"></div>
+        <button onclick="changePw()" style="width:100%;margin-top:6px">Update Password</button>
+      </div>
+    </div>
+    <div class="box">
+      <h2>Payment numbers & Contacts</h2>
+      <div class="g2">
+        <div class="f"><label>Vodafone Cash number</label><input id="sVc" type="tel"></div>
+        <div class="f"><label>InstaPay number / handle</label><input id="sIp"></div>
+      </div>
+      <div class="f"><label>Store email</label><input id="sMail" type="email"></div>
+      <div class="f"><label>New-order email link (from Google Apps Script)</label><input id="sNotify" placeholder="https://script.google.com/macros/s/.../exec"></div>
+      <div class="f"><label>Email OTP service link (Dot, Google Apps Script)</label><input id="sOtp" placeholder="https://script.google.com/macros/s/.../exec"></div>
+      <div class="g2"><div class="f"><label>Shipping: Cairo and Giza (EGP)</label><input id="sShipCG" type="number" min="0"></div><div class="f"><label>Shipping: other governorates (EGP)</label><input id="sShipOther" type="number" min="0"></div></div>
+      <div class="f"><label>Free shipping over (EGP, 0 = off)</label><input id="sShipFree" type="number" min="0"></div>
+      <div class="f"><label>Return and privacy policy (shown to customers)</label><textarea id="sPolicy" rows="5"></textarea></div>
+      <div class="f"><label>Address</label><input id="sAddr"></div>
+      <div class="g2"><div class="f"><label>Phone 1</label><input id="sP1" type="tel"></div><div class="f"><label>Phone 2</label><input id="sP2" type="tel"></div></div>
+      <div class="f"><label>Phone 3</label><input id="sP3" type="tel"></div>
+      <button onclick="saveSettings()" style="width:100%;margin-top:6px">Save</button>
+    </div>
+    <div class="box">
+      <h2>⭐ Dot loyalty rules</h2>
+      <p class="mut" style="margin:0 0 8px">Each delivered order gives the customer 1 stamp (matched by phone number). Rewards are created automatically as discount codes and appear on the customer's Dot card.</p>
+      <div class="g2">
+        <div class="f"><label>First reward at stamp #</label><input id="dtA" type="number" min="1"></div>
+        <div class="f"><label>First reward discount %</label><input id="dtAP" type="number" min="1" max="100"></div>
+        <div class="f"><label>Second reward at stamp # (card then restarts)</label><input id="dtB" type="number" min="2"></div>
+        <div class="f"><label>Second reward discount %</label><input id="dtBP" type="number" min="1" max="100"></div>
+      </div>
+      <div class="f"><label>Reward code valid for (days)</label><input id="dtD" type="number" min="1"></div>
+      <button onclick="saveDot()" style="width:100%;margin-top:6px">Save Dot rules</button>
+    </div>
+    <div class="box">
+      <h2>Discount codes</h2>
+      <div class="g2">
+        <div class="f"><label>Code *</label><input id="dcName" placeholder="SAVE10" autocapitalize="characters"></div>
+        <div class="f"><label>Discount % (1–100) *</label><input id="dcPct" type="number" min="1" max="100"></div>
+      </div>
+      <p class="mut" style="margin:0 0 8px">Each code is valid for 7 days from creation, and each phone number can use it once.</p>
+      <button onclick="addDiscount()" style="width:100%">Create code</button>
+      <div id="dcList" style="margin-top:12px"></div>
+    </div>
+    <div class="box"><h2>Items Management</h2><div id="adminList"></div></div>
+  </section>
+
+  <section id="v-orders" class="hide">
+    <div class="box" id="invBar" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="mut" id="invSt" style="flex:1;min-width:180px"></span><button id="invBtn" class="ghost" onclick="pickFolder()">📁 Choose invoices folder</button></div>
+    <input id="oSearch" placeholder="Search orders..." oninput="renderOrders()" style="margin-bottom:10px">
+    <div class="chips" id="chips"></div>
+    <div id="orderList"></div>
+  </section>
+</main>
+
+<div id="pview" class="modal hide" onclick="if(event.target===this)closeProduct()">
+  <div class="box pv">
+    <button class="x" onclick="closeProduct()">✕</button>
+    <div class="gal" id="gal"></div>
+    <div class="ths" id="ths"></div>
+    <h3 id="pvName"></h3>
+    <span class="mut" id="pvDesc"></span>
+    <div class="price" id="pvPrice" style="margin-top:6px"></div>
+    <div class="acts"><button onclick="addCart(pvId);closeProduct()">Add to cart</button></div>
+  </div>
+</div>
+
+<div id="login" class="modal hide">
+  <div class="box">
+    <h2>🔒 Admin Login</h2>
+    <div class="f"><input id="loginPw" type="password" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <div id="lockMsg" class="mut" style="color:var(--no);margin-bottom:8px"></div>
+    <button onclick="doLogin()" style="width:100%">Unlock</button>
+    <p style="margin:8px 0 0"><button class="ghost" onclick="closeModal('login')" style="width:100%">Cancel</button></p>
+    <p style="margin:6px 0 0"><button class="ghost" onclick="showForgot()" style="width:100%">Forgot Password?</button></p>
+  </div>
+</div>
+
+<div id="policy" class="modal hide" onclick="if(event.target===this)closeModal('policy')"><div class="box" style="text-align:start;max-height:85vh;overflow-y:auto"><h2>Return &amp; Privacy policy</h2><div id="policyTxt" class="mut" style="white-space:pre-wrap;font-size:14px"></div><button onclick="closeModal('policy')" style="width:100%;margin-top:10px">Close</button></div></div>
+
+<div id="done" class="modal hide">
+  <div class="box">
+    <h2>🎉 Order Placed!</h2><p class="mut">Your tracking code:</p>
+    <div class="big code" id="doneCode"></div>
+    <button onclick="copyCode()" style="width:100%;margin-bottom:6px">Copy Code</button>
+    <button class="ghost" onclick="goToTrack()" style="width:100%">Track Order</button>
+  </div>
+</div>
+
+<footer id="foot"></footer>
+<div id="bnav">
+  <button id="bn-shop" class="on" onclick="switchView('shop')"><b>🏠</b>Shop</button>
+  <button id="bn-cart" onclick="switchView('cart')"><b>🛒<i id="cc2" class="bd hide">0</i></b>Cart</button>
+  <button id="bn-mine" onclick="switchView('mine')"><b>📦</b>My orders</button>
+  <button id="bn-acct" onclick="switchView('acct')"><b>👤</b><span id="bn-acct-t">Sign in</span></button>
+  <button id="bn-dot" onclick="switchView('dot')"><b>⭐</b>Dot</button>
+  <button id="bn-help" onclick="switchView('help')"><b>💬</b>Complaints</button>
+</div>
+<div id="toast"></div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, updatePassword, reauthenticateWithCredential, EmailAuthProvider, sendPasswordResetEmail, createUserWithEmailAndPassword, sendEmailVerification, GoogleAuthProvider, signInWithPopup, setPersistence, browserLocalPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+  import { getDatabase, ref, onValue, set, get, push, remove, update, runTransaction } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
+  const ADMIN_EMAIL = "youssefkhaledyoussef869@gmail.com";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBtRCjNPB5y9iuSW2FmyirL_ufxJ8DXfkM",
+    authDomain: "e-com-28d65.firebaseapp.com",
+    databaseURL: "https://e-com-28d65-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "e-com-28d65",
+    storageBucket: "e-com-28d65.firebasestorage.app",
+    messagingSenderId: "742284366006",
+    appId: "1:742284366006:web:7542880d63016211095617"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getDatabase(app);
+
+  const $ = i => document.getElementById(i);
+  const STEPS = [['placed','Placed'],['confirmed','Confirmed'],['shipped','Shipped'],['out','Out for delivery'],['delivered','Delivered']];
+  const LABEL = {placed:'Placed',confirmed:'Confirmed',shipped:'Shipped',out:'Out for delivery',delivered:'Delivered',cancelled:'Cancelled'};
+  let products = [], orders = [], mine = {}, cart = {}, filter = 'all', lastCode = '', isAdmin = false, pending = 'shop';
+  let failCount = parseInt(localStorage.getItem('failCount') || '0');
+  let lockUntil = parseInt(localStorage.getItem('lockUntil') || '0');
+
+  // ---- Security helpers (added) ----
+  // esc: escapes text AND quotes, safe inside HTML text and attributes
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  // sid: keeps only safe characters (for ids/codes placed inside onclick="...")
+  const sid = s => String(s == null ? '' : s).replace(/[^A-Za-z0-9_-]/g, '');
+  const num = n => { n = Number(n); return isFinite(n) ? n : 0; };
+  const OKST = ['placed', 'confirmed', 'shipped', 'out', 'delivered', 'cancelled'], OKRET = ['requested', 'approved', 'rejected'];
+  const rOk = s => OKRET.includes(s) ? s : 'requested';
+  const imgOk = u => (typeof u === 'string' && (/^data:image\/(jpeg|png|webp|gif);base64,[A-Za-z0-9+\/=]+$/.test(u) || /^https:\/\/[^\s"'<>]+$/.test(u))) ? u : '';
+  const proofOk = u => (typeof u === 'string' && /^data:image\/jpeg;base64,[A-Za-z0-9+\/=]+$/.test(u)) ? u : '';
+  const st = o => OKST.includes(o.status) ? o.status : 'placed';
+  const money = n => Number(n || 0).toFixed(2);
+  // تم إصلاح دالة val لتجنب الأخطاء إذا كان العنصر غير موجود
+  const val = id => { const el = $(id); return el ? el.value.trim() : ''; };
+
+  function toast(t) {
+    const e = $('toast');
+    if (!e) return;
+    e.textContent = t;
+    e.classList.add('on');
+    clearTimeout(toast.t);
+    toast.t = setTimeout(() => e.classList.remove('on'), 3000);
+  }
+
+  window.openModal = function(id) { const m = $(id); if (m) m.classList.remove('hide'); };
+  window.closeModal = function(id) { const m = $(id); if (m) m.classList.add('hide'); };
+
+  window.switchView = function(v) {
+    if ((v === 'admin' || v === 'orders') && !isAdmin) {
+      pending = v;
+      $('loginPw').value = '';
+      checkLockout();
+      openModal('login');
+      return;
+    }
+    ['shop', 'cart', 'mine', 'acct', 'dot', 'help', 'admin', 'orders'].forEach(x => {
+      const sec = $('v-' + x);
+      if (sec) sec.classList.toggle('hide', x !== v);
+      const nb = $('nav-' + x);
+      if (nb) nb.classList.toggle('on', x === v);
+      const bb = $('bn-' + x);
+      if (bb) bb.classList.toggle('on', x === v);
+    });
+    window.scrollTo(0, 0);
+    if (v === 'dot') dotAuto();
+  };
+
+  function checkLockout() {
+    const now = Date.now();
+    if (now < lockUntil) {
+      const left = Math.ceil((lockUntil - now) / 1000);
+      const lm = $('lockMsg');
+      if (lm) lm.textContent = `Locked! Try again in ${left}s`;
+      setTimeout(checkLockout, 1000);
+    } else {
+      const lm = $('lockMsg');
+      if (lm) lm.textContent = '';
+    }
+  }
+
+  window.doLogin = async function() {
+    const now = Date.now();
+    if (now < lockUntil) { toast('Locked due to multiple failed attempts'); return; }
+    const pw = $('loginPw').value;
+    if (!pw) { toast('Please enter password'); return; }
+    try {
+      await signInWithEmailAndPassword(auth, ADMIN_EMAIL, pw);
+      isAdmin = true;
+      failCount = 0;
+      localStorage.setItem('failCount', '0');
+      closeModal('login');
+      window.switchView(pending);
+      toast('Unlocked ✅');
+    } catch (e) {
+      failCount++;
+      localStorage.setItem('failCount', failCount);
+      if (failCount >= 3) {
+        lockUntil = Date.now() + 60000;
+        localStorage.setItem('lockUntil', lockUntil);
+        failCount = 0;
+        localStorage.setItem('failCount', '0');
+        checkLockout();
+        toast('Too many failed attempts. Locked for 1 minute.');
+      } else {
+        toast(`Wrong password! Attempt ${failCount}/3`);
+      }
+    }
+  };
+
+  window.showForgot = async function() {
+    try {
+      await sendPasswordResetEmail(auth, ADMIN_EMAIL);
+      toast('Reset link sent to your email 📧 (check Spam too)');
+    } catch (e) {
+      console.error(e);
+      toast('Reset failed: ' + (e.code || e.message));
+    }
+  };
+
+  window.lockAdmin = async function() {
+    try { await signOut(auth); } catch (e) {}
+    isAdmin = false;
+    renderOrders();
+    window.switchView('shop');
+    toast('Locked 🔒');
+  };
+
+  window.changePw = async function() {
+    const o = $('oldPw').value, n = $('newPw').value;
+    if (n.length < 12) return toast('New password must be 12+ characters');
+    try {
+      const u = auth.currentUser;
+      await reauthenticateWithCredential(u, EmailAuthProvider.credential(ADMIN_EMAIL, o));
+      await updatePassword(u, n);
+      $('oldPw').value = $('newPw').value = '';
+      toast('Password changed ✅');
+    } catch (e) {
+      toast('Error updating password: ' + (e.message || 'Check current password'));
+    }
+  };
+
+  let retUnsub = null, kUnsub = null, kInit = false, complaints = {}, cfg = {};
+  const PH = x => String(x == null ? '' : x).replace(/[^\d+]/g, '');
+  onValue(ref(db, 'settings'), s => {
+    cfg = s.val() || {};
+    const pi = $('payInfo'), vc = cfg.vc, ip = cfg.ip;
+    if (pi) pi.innerHTML = (vc || ip) ? `<b>Transfer the total to:</b>${vc ? `<br>Vodafone Cash: <span class="code">${esc(vc)}</span>` : ''}${ip ? `<br>InstaPay: <span class="code">${esc(ip)}</span>` : ''}` : '<span class="mut">Payment numbers will appear here.</span>';
+    const ph = [cfg.p1, cfg.p2, cfg.p3].filter(Boolean); if (!ph.length) ph.push('01097709169');
+    const f = $('foot');
+    if (f) f.innerHTML = `<b>Contact us</b><br>${cfg.addr ? '📍 ' + esc(cfg.addr) + '<br>' : ''}${cfg.mail ? `✉️ <a href="mailto:${esc(cfg.mail)}">${esc(cfg.mail)}</a><br>` : ''}${ph.map(x => `📞 <a href="tel:${PH(x)}">${esc(x)}</a>`).join(' &nbsp; ')}<br><a href="#" onclick="openPolicy();return false">Return &amp; Privacy policy</a>`;
+    [['sVc', 'vc'], ['sIp', 'ip'], ['sMail', 'mail'], ['sAddr', 'addr'], ['sP1', 'p1'], ['sP2', 'p2'], ['sP3', 'p3'], ['sNotify', 'notifyUrl'], ['sOtp', 'otpUrl'], ['sShipCG', 'shipCG'], ['sShipOther', 'shipOther'], ['sShipFree', 'shipFree'], ['sPolicy', 'policy']].forEach(([i, k]) => { const e = $(i); if (e && document.activeElement !== e) e.value = cfg[k] || ''; });
+    renderCart();
+  }, e => console.error(e));
+  window.saveSettings = async function() {
+    try {
+      await set(ref(db, 'settings'), { vc: val('sVc'), ip: val('sIp'), mail: val('sMail'), addr: val('sAddr'), p1: val('sP1'), p2: val('sP2'), p3: val('sP3'), notifyUrl: val('sNotify'), otpUrl: val('sOtp'), shipCG: val('sShipCG'), shipOther: val('sShipOther'), shipFree: val('sShipFree'), policy: val('sPolicy').slice(0, 3000) });
+      toast('Saved ✅');
+    } catch (e) { toast('Error: ' + (e.code || e.message)); }
+  };
+  function renderComplaints() {
+    const l = Object.entries(complaints).map(([id, c]) => Object.assign({ id }, c)).sort((a, b) => b.at - a.at);
+    if ($('kc')) $('kc').textContent = l.length ? '(' + l.length + ')' : '';
+    if ($('ac')) $('ac').textContent = l.length ? '(' + l.length + ')' : '';
+    if ($('ac2')) { $('ac2').textContent = l.length; $('ac2').classList.toggle('hide', !l.length); }
+    if ($('kList')) $('kList').innerHTML = l.map(c => `<div class="row" style="align-items:flex-start"><span><b>${esc(c.name)}</b> · <a href="tel:${PH(c.phone)}">${esc(c.phone)}</a>${c.code ? ' · <span class="code">' + esc(c.code) + '</span>' : ''}<br>${esc(c.msg)}<br><span class="mut">${new Date(c.at).toLocaleString()}</span></span><button class="del" onclick="delComplaint('${sid(c.id)}')">🗑</button></div>`).join('') || '<p class="mut">No complaints.</p>';
+  }
+  window.delComplaint = async function(id) { if (confirm('Delete complaint?')) try { await remove(ref(db, 'complaints/' + id)); } catch (e) { toast('Error'); } };
+
+  function invoiceHtml(o) {
+    const a = o.addr || {}, d = o.discount;
+    const rows = (o.items || []).map(i => `<tr><td>${esc(i.name)}</td><td>${num(i.qty)}</td><td>${money(i.price)}</td><td>${money(i.price * i.qty)}</td></tr>`).join('');
+    return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Invoice ${esc(o.code)}</title><style>body{font-family:Arial,sans-serif;max-width:700px;margin:30px auto;color:#14213d}table{width:100%;border-collapse:collapse;margin:14px 0}th,td{border-bottom:1px solid #ddd;padding:8px;text-align:left}.r{text-align:right}h1{margin:0}</style></head><body><h1>MY SHOP — Invoice</h1><p><b>${esc(o.code)}</b> · ${new Date(o.at).toLocaleString()}</p><p><b>${esc(o.name)}</b><br>${esc(o.phone)}${o.email ? '<br>' + esc(o.email) : ''}<br>${esc([a.city, a.area, a.street, 'Building ' + (a.bName || '') + ' ' + (a.bNo || ''), 'Floor ' + (a.floor || ''), 'Apt ' + (a.apt || '')].filter(Boolean).join(', '))}${a.notes ? '<br>Notes: ' + esc(a.notes) : ''}</p><p>Payment: ${o.pay === 'wallet' ? 'Vodafone Cash / InstaPay' : 'Cash on Delivery'}</p><table><tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th></tr>${rows}</table><p class="r">${d ? `Discount ${esc(d.code)} (-${num(d.percent)}%): -${money(d.amount)} EGP<br>` : ''}Delivery: ${money(o.ship === undefined ? 80 : o.ship)} EGP<br><b>Total: ${money(o.total)} EGP</b></p></body></html>`;
+  }
+  window.dlInvoice = function(code) {
+    const o = orders.find(x => x.code === code);
+    if (!o) return;
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([invoiceHtml(o)], { type: 'text/html' }));
+    a.download = code + '.html';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  };
+  const idb = (m, v) => new Promise((res, rej) => {
+    const r = indexedDB.open('shopFs', 1);
+    r.onupgradeneeded = () => r.result.createObjectStore('k');
+    r.onerror = () => rej(r.error);
+    r.onsuccess = () => {
+      const st = r.result.transaction('k', m === 'get' ? 'readonly' : 'readwrite').objectStore('k'), q = m === 'get' ? st.get('dir') : st.put(v, 'dir');
+      q.onsuccess = () => res(q.result); q.onerror = () => rej(q.error);
+    };
+  });
+  let dirH = null, okDir = false;
+  const doneInv = () => { try { return JSON.parse(localStorage.getItem('invDone') || '[]'); } catch (e) { return []; } };
+  function invUI() {
+    const sp = $('invSt'), b = $('invBtn');
+    if (!sp) return;
+    if (!window.showDirectoryPicker) { sp.textContent = 'Auto-saving needs Chrome/Edge on a computer. Use the 🧾 Invoice button on each order.'; b.classList.add('hide'); return; }
+    sp.textContent = !dirH ? 'Choose a folder on this computer and every new order invoice is saved there automatically (while this page is open).' : okDir ? '✅ Saving invoices to folder: ' + dirH.name : '⚠ Folder "' + dirH.name + '" needs permission again (browser rule after reopening).';
+    b.textContent = !dirH ? '📁 Choose invoices folder' : okDir ? '📁 Change folder' : '🔓 Allow folder';
+  }
+  window.pickFolder = async function() {
+    try {
+      if (dirH && !okDir) { okDir = (await dirH.requestPermission({ mode: 'readwrite' })) === 'granted'; }
+      else { dirH = await window.showDirectoryPicker({ mode: 'readwrite' }); await idb('set', dirH); okDir = true; }
+    } catch (e) { return; }
+    invUI(); autoSave();
+  };
+  async function autoSave() {
+    if (!dirH || !okDir || !isAdmin) return;
+    const d = doneInv();
+    for (const o of orders) {
+      if (d.includes(o.code)) continue;
+      try {
+        const w = await (await dirH.getFileHandle(o.code + '.html', { create: true })).createWritable();
+        await w.write(invoiceHtml(o)); await w.close();
+        d.push(o.code); localStorage.setItem('invDone', JSON.stringify(d));
+      } catch (e) { console.error(e); okDir = false; invUI(); return; }
+    }
+  }
+  if (window.showDirectoryPicker) idb('get').then(async h => { if (h) { dirH = h; okDir = (await h.queryPermission({ mode: 'readwrite' })) === 'granted'; } invUI(); autoSave(); }).catch(() => invUI()); else invUI();
+
+  let ordersUnsub = null, oInit = false;
+  onAuthStateChanged(auth, u => {
+    isAdmin = !!u && u.email === ADMIN_EMAIL;
+    acctAuth(u && u.email !== ADMIN_EMAIL ? u : null);
+    { const sw = $('lockSw'), tx = $('lkTxt'); if (sw) sw.checked = isAdmin; if (tx) tx.textContent = isAdmin ? 'Admin ON' : 'Admin LOCKED'; }
+    if (isAdmin && !suUnsub) suUnsub = onValue(ref(db, 'signups'), renderSignups, () => {});
+    if (!isAdmin && suUnsub) { suUnsub(); suUnsub = null; }
+    if (ordersUnsub) { ordersUnsub(); ordersUnsub = null; } oInit = false;
+    if (discUnsub) { discUnsub(); discUnsub = null; }
+    if (retUnsub) { retUnsub(); retUnsub = null; }
+    if (kUnsub) { kUnsub(); kUnsub = null; kInit = false; }
+    if (usesUnsub) { usesUnsub(); usesUnsub = null; }
+    if (isAdmin) {
+      retUnsub = onValue(ref(db, 'returns'), s => { rAll = s.val() || {}; renderOrders(); }, e => { console.error(e); toast('Returns error: ' + (e.code || e.message)); });
+      kUnsub = onValue(ref(db, 'complaints'), s => { const old = Object.keys(complaints).length; complaints = s.val() || {}; if (kInit && Object.keys(complaints).length > old) toast('📩 New complaint received'); kInit = true; renderComplaints(); }, e => { console.error(e); toast('Complaints error: ' + (e.code || e.message)); });
+      discUnsub = onValue(ref(db, 'discounts'), s => { discounts = s.val() || {}; renderDiscounts(); }, err => console.error(err));
+      usesUnsub = onValue(ref(db, 'discountUses'), s => { discUses = s.val() || {}; renderDiscounts(); }, err => console.error(err));
+      ordersUnsub = onValue(ref(db, 'orders'), s => {
+        const prevN = orders.length;
+        orders = Object.values(s.val() || {}).sort((a, b) => b.at - a.at);
+        if (oInit && orders.length > prevN) { toast('🛒 New order received!'); try { navigator.vibrate && navigator.vibrate(250); } catch (e) {} }
+        oInit = true;
+        renderOrders();
+        autoSave();
+      }, err => {
+        console.error(err);
+        toast('Error loading orders: ' + err.message);
+      });
+    } else {
+      orders = []; discounts = {}; discUses = {}; rAll = {}; complaints = {}; renderDiscounts(); renderComplaints();
+      ['admin', 'orders'].forEach(x => {
+        const e = $('v-' + x);
+        if (e && !e.classList.contains('hide')) window.switchView('shop');
+      });
+    }
+    renderOrders();
+  });
+
+  const saved = () => { try { return JSON.parse(localStorage.getItem('shopCodes') || '[]'); } catch (e) { return []; } };
+  const subs = {}, rets = {};
+  function watch(code) {
+    if (subs[code]) return;
+    onValue(ref(db, 'returns/' + code), s => { if (s.exists()) rets[code] = s.val(); else delete rets[code]; renderMine(); });
+    subs[code] = onValue(ref(db, 'tracking/' + code), s => {
+      if (s.exists()) mine[code] = s.val();
+      else delete mine[code];
+      renderMine();
+    });
+  }
+  function remember(code) {
+    const l = saved();
+    if (!l.includes(code)) {
+      l.push(code);
+      localStorage.setItem('shopCodes', JSON.stringify(l));
+    }
+    watch(code);
+  }
+
+  window.trackCode = async function() {
+    const c = sid($('tCode').value.trim().toUpperCase());
+    if (!c) return;
+    try {
+      const s = await get(ref(db, 'tracking/' + c));
+      if (s.exists()) {
+        remember(c);
+        $('tCode').value = '';
+        toast('Order added ✅');
+      } else {
+        toast('Order not found');
+      }
+    } catch (e) {
+      toast('Error tracking order');
+    }
+  };
+
+  function renderShop() {
+    const grid = $('grid');
+    if (!grid) return;
+    const q = ($('shopQ') ? $('shopQ').value : '').trim().toLowerCase();
+    catList = [...new Set(products.map(p => (p.cat || '').trim()).filter(Boolean))];
+    if (catF && !catList.includes(catF)) catF = '';
+    const ch = $('catChips');
+    if (ch) ch.innerHTML = catList.length ? `<button class="${catF ? 'ghost' : ''}" onclick="setCat(-1)">All</button>` + catList.map((c, i) => `<button class="${catF === c ? '' : 'ghost'}" onclick="setCat(${i})">${esc(c)}</button>`).join('') : '';
+    const shown = products.filter(p => (!catF || (p.cat || '').trim() === catF) && (!q || (p.name + ' ' + (p.desc || '')).toLowerCase().includes(q)));
+    grid.innerHTML = shown.map(p => { const im = imgsOf(p), nI = Math.max(im.length, num(p.n)); return `<div class="card"><div class="im" onclick="openProduct('${sid(p.id)}')">${im[0] ? `<img src="${esc(im[0])}" loading="lazy">` : ''}${nI > 1 ? `<span class="badge">📷 ${nI}</span>` : ''}</div><div class="b"><h3 onclick="openProduct('${sid(p.id)}')">${esc(p.name)}</h3><span class="mut">${esc(p.desc)}</span><span class="price">${money(p.price)} EGP</span><button ${isSold(p) ? 'disabled' : ''} onclick="addCart('${sid(p.id)}')">${isSold(p) ? 'Sold out' : 'Add to cart'}</button></div></div>`; }).join('');
+    const em = $('empty');
+    if (em) em.textContent = shown.length ? '' : (products.length ? 'No matching items.' : 'No items available yet.');
+    const al = $('adminList');
+    if (al) al.innerHTML = products.map(p => `<div class="row"><span style="display:flex;align-items:center">${imgsOf(p)[0] ? `<img class="thumb" src="${esc(imgsOf(p)[0])}">` : ''}${esc(p.name)} — ${money(p.price)} EGP${typeof p.stock === 'number' ? ' · Stock: ' + p.stock : ''}${imgsOf(p).length > 1 ? ' (' + imgsOf(p).length + ' 📷)' : ''}</span><span style="display:flex;gap:6px"><button class="ghost" onclick="setStock('${sid(p.id)}')">Stock</button><button class="ghost" onclick="editItem('${sid(p.id)}')">Edit</button><button class="ghost" onclick="toggleSold('${sid(p.id)}')">${p.soldOut ? 'Back in stock' : 'Sold out'}</button><button class="del" onclick="delItem('${sid(p.id)}')">Delete</button></span></div>`).join('') || '<p class="mut">No items.</p>';
+  }
+
+  window.renderShop = renderShop;
+  const isSold = p => !!p.soldOut || (typeof p.stock === 'number' && p.stock <= 0);
+  let catF = '', catList = [];
+  const WEEK = 7 * 24 * 3600 * 1000, SHIP = 80;
+  let applied = null, discounts = {}, discUses = {}, discUnsub = null, usesUnsub = null;
+  const cleanCode = c => String(c || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 20);
+  const phoneKey = ph => { const d = String(ph || '').replace(/\D/g, ''); return d.length >= 10 ? d.slice(-10) : ''; };
+  const discAmount = (sub, pct) => Math.round(sub * pct) / 100;
+  const discHtml = o => o.discount ? `<div class="row" style="color:var(--ok)"><span>Discount ${esc(o.discount.code)} (-${esc(o.discount.percent)}%)</span><span>-${money(o.discount.amount)}</span></div>` : '';
+  const calcTotal = o => { const sub = (o.items || []).reduce((t, i) => t + num(i.price) * num(i.qty), 0); const d = o.discount ? discAmount(sub, num(o.discount.percent)) : 0; const sh = o.ship === undefined ? SHIP : shipFor((o.addr || {}).city, sub - d); return Math.round((sub - d + sh) * 100) / 100; };
+  function dmsg(t, ok) { const e = $('dMsg'); if (e) { e.textContent = t || ''; e.className = 'dmsg ' + (t ? (ok ? 'ok' : 'no') : ''); } }
+
+  async function fetchDiscount(code) {
+    const snap = await get(ref(db, 'discounts/' + code));
+    if (!snap.exists()) return { err: 'Invalid code' };
+    const d = snap.val();
+    if (Date.now() > d.expiresAt) return { err: 'This code has expired' };
+    return { d };
+  }
+
+  window.applyDiscount = async function() {
+    const code = cleanCode(val('dCode'));
+    if (!code) return dmsg('Enter a code', false);
+    if (!Object.keys(cart).length) return dmsg('Your cart is empty', false);
+    const pk = phoneKey(val('cPhone'));
+    if (!pk) return dmsg('Enter your phone number in Checkout first', false);
+    const btn = $('dBtn');
+    btn.disabled = true;
+    try {
+      const r = await fetchDiscount(code);
+      if (r.err) { applied = null; renderCart(); return dmsg(r.err, false); }
+      const used = await get(ref(db, 'discountUses/' + code + '/' + pk));
+      if (used.exists()) { applied = null; renderCart(); return dmsg('You already used this code', false); }
+      applied = { code, percent: r.d.percent };
+      renderCart();
+      dmsg('Code applied: ' + r.d.percent + '% off ✅', true);
+    } catch (e) {
+      console.error(e);
+      dmsg('Could not check the code, try again', false);
+    }
+    btn.disabled = false;
+  };
+
+  window.addDiscount = async function() {
+    const code = cleanCode(val('dcName')), pct = parseFloat($('dcPct').value);
+    if (!code || isNaN(pct) || pct < 1 || pct > 100) return toast('Enter a code and a percent from 1 to 100');
+    try {
+      const ex = await get(ref(db, 'discounts/' + code));
+      if (ex.exists() && Date.now() <= ex.val().expiresAt && !confirm('Code already active. Replace it and restart its 7 days?')) return;
+      const at = Date.now();
+      await set(ref(db, 'discounts/' + code), { code, percent: pct, createdAt: at, expiresAt: at + WEEK });
+      $('dcName').value = ''; $('dcPct').value = '';
+      toast('Code created ✅');
+    } catch (e) { console.error(e); toast('Error: ' + (e.code || e.message)); }
+  };
+
+  // ===== Dot account (sign up / login / addresses) =====
+  let cu = null, acct = { name: '', phone: '', addresses: {} }, acctUnsub = null, amode = 'in', aLoc = null;
+  const AERR = { 'auth/email-already-in-use': 'This email already has an account, use Sign in', 'auth/weak-password': 'Password must be at least 6 characters', 'auth/invalid-email': 'Invalid email', 'auth/invalid-credential': 'Wrong email or password', 'auth/user-not-found': 'Wrong email or password', 'auth/wrong-password': 'Wrong email or password', 'auth/too-many-requests': 'Too many attempts, try again later', 'auth/network-request-failed': 'No internet connection' };
+  const aerr = e => toast(AERR[e.code] || ('Error: ' + (e.code || e.message)));
+  const setAuthLang = () => { try { auth.languageCode = (typeof lang !== 'undefined' && lang === 'ar') ? 'ar' : 'en'; } catch (e) {} };
+
+  let dcard = null, dotUnsub = null, ov = false, ovReady = false, otpBusy = false, otpUnsub = null, otpAsked = {}, otpTick = null, suUnsub = null;
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  const ssGet = k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } };
+  const ssSet = (k, v) => { try { sessionStorage.setItem(k, String(v)); } catch (e) {} };
+
+  function acctAuth(u) {
+    cu = u;
+    if (acctUnsub) { acctUnsub(); acctUnsub = null; }
+    if (otpUnsub) { otpUnsub(); otpUnsub = null; }
+    if (dotUnsub) { dotUnsub(); dotUnsub = null; }
+    dcard = null;
+    acct = { name: '', phone: '', addresses: {} };
+    ov = false; ovReady = false; otpBusy = false;
+    renderAcct(); renderDot();
+    if (!u) return;
+    otpUnsub = onValue(ref(db, 'otpVerified/' + u.uid), s => {
+      ovReady = true; ov = s.exists();
+      if (ov && !acctUnsub) acctUnsub = onValue(ref(db, 'users/' + u.uid), s2 => { const v = s2.val() || {}; acct = { name: v.name || '', phone: v.phone || '', addresses: v.addresses || {} }; renderAcct(); }, e => { console.error(e); toast('Account error: ' + (e.code || e.message)); });
+      if (ov && !dotUnsub) dotUnsub = onValue(ref(db, 'dot/cards/' + u.uid), s3 => { dcard = s3.val() || { stamps: 0 }; renderDot(); }, e => { console.error(e); dcard = { stamps: 0 }; renderDot(); });
+      renderAcct();
+    }, e => { console.error(e); ovReady = true; ov = false; renderAcct(); });
+  }
+
+  function acctNav() {
+    const na = $('nav-acct'), no = $('hdrOut'), bt = $('bn-acct-t');
+    const nm = ((acct && acct.name) || (cu && cu.displayName) || (cu && cu.email ? cu.email.split('@')[0] : '')).split(' ')[0].slice(0, 14);
+    if (na) na.textContent = cu ? '👤 ' + nm : '👤 Sign in';
+    if (no) no.style.display = cu ? '' : 'none';
+    if (bt) bt.textContent = cu ? nm : 'Sign in';
+  }
+
+  function renderAcct() {
+    acctNav();
+    const b = $('acctBody'); if (!b || otpBusy) return;
+    if (!cu) {
+      const up = amode === 'up';
+      b.innerHTML = '<div class="box"><h2>👤 Dot Account</h2><div class="authf">'
+        + (up ? '<label class="l">Full name</label><div class="inputForm"><input id="auName" placeholder="Enter your name" autocomplete="name"></div>' : '')
+        + '<label class="l">Email</label><div class="inputForm"><svg height="20" viewBox="0 0 32 32" width="20" xmlns="http://www.w3.org/2000/svg"><path d="m30.853 13.87a15 15 0 0 0 -29.729 4.082 15.1 15.1 0 0 0 12.876 12.918 15.6 15.6 0 0 0 2.016.13 14.85 14.85 0 0 0 7.715-2.145 1 1 0 1 0 -1.031-1.711 13.007 13.007 0 1 1 5.458-6.529 2.149 2.149 0 0 1 -4.158-.759v-10.856a1 1 0 0 0 -2 0v1.726a8 8 0 1 0 .2 10.325 4.135 4.135 0 0 0 7.83.274 15.2 15.2 0 0 0 .823-7.455zm-14.853 8.13a6 6 0 1 1 6-6 6.006 6.006 0 0 1 -6 6z"/></svg><input id="auEmail" type="email" placeholder="Enter your Email" autocomplete="email"></div>'
+        + '<label class="l">Password</label><div class="inputForm"><svg height="20" viewBox="-64 0 512 512" width="20" xmlns="http://www.w3.org/2000/svg"><path d="m336 512h-288c-26.453125 0-48-21.523438-48-48v-224c0-26.476562 21.546875-48 48-48h288c26.453125 0 48 21.523438 48 48v224c0 26.476562-21.546875 48-48 48zm-288-288c-8.8125 0-16 7.167969-16 16v224c0 8.832031 7.1875 16 16 16h288c8.8125 0 16-7.167969 16-16v-224c0-8.832031-7.1875-16-16-16zm0 0"/><path d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0"/></svg><input id="auPw" type="password" placeholder="Enter your Password" autocomplete="' + (up ? 'new-password' : 'current-password') + '" onkeydown="if(event.key===\'Enter\')' + (up ? 'acctSignUp()' : 'acctSignIn()') + '"><svg class="eye" onclick="acctEye()" viewBox="0 0 576 512" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"/></svg></div>'
+        + (up ? '' : '<div class="r2"><label style="display:flex;align-items:center"><input type="checkbox" id="auRem" checked>Remember me</label><button class="sp" onclick="acctReset()">Forgot password?</button></div>')
+        + '<button class="sub" onclick="' + (up ? 'acctSignUp()' : 'acctSignIn()') + '">' + (up ? 'Sign Up' : 'Sign In') + '</button>'
+        + (up ? '<p class="pp">Already have an account? <button class="sp" onclick="acctMode(\'in\')">Sign In</button></p><p class="mut pp">We will email you a verification link. Open it, then come back here.</p>' : '<p class="pp">Don\'t have an account? <button class="sp" onclick="acctMode(\'up\')">Sign Up</button></p>')
+        + '<p class="pp line">Or With</p><button class="gbtn" onclick="acctGoogle()"><svg width="20" height="20" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#FBBB00" d="M113.47,309.408L95.648,375.94l-65.139,1.378C11.042,341.211,0,299.9,0,256c0-42.451,10.324-82.483,28.624-117.732h0.014l57.992,10.632l25.404,57.644c-5.317,15.501-8.215,32.141-8.215,49.456C103.821,274.792,107.225,292.797,113.47,309.408z"/><path fill="#518EF8" d="M507.527,208.176C510.467,223.662,512,239.655,512,256c0,18.328-1.927,36.206-5.598,53.451c-12.462,58.683-45.025,109.925-90.134,146.187l-0.014-0.014l-73.044-3.727l-10.338-64.535c29.932-17.554,53.324-45.025,65.646-77.911h-136.89V208.176h138.887L507.527,208.176L507.527,208.176z"/><path fill="#28B446" d="M416.253,455.624l0.014,0.014C372.396,490.901,316.666,512,256,512c-97.491,0-182.252-54.491-225.491-134.681l82.961-67.91c21.619,57.698,77.278,98.771,142.53,98.771c28.047,0,54.323-7.582,76.87-20.818L416.253,455.624z"/><path fill="#F14336" d="M419.404,58.936l-82.933,67.896c-23.335-14.586-50.919-23.012-80.471-23.012c-66.729,0-123.429,42.957-143.965,102.724l-83.397-68.276h-0.014C71.23,56.123,157.06,0,256,0C318.115,0,375.068,22.126,419.404,58.936z"/></svg> Google</button></div></div>';
+      return;
+    }
+    if (!ovReady) { b.innerHTML = '<div class="box"><p class="mut">Loading...</p></div>'; return; }
+    if (!ov) { renderOTP(b); return; }
+    const nm = acct.name || (localStorage.getItem('dotName') || '');
+    const cities = (typeof CITIES !== 'undefined' ? CITIES : []).map(c => '<option>' + esc(c) + '</option>').join('');
+    const list = Object.entries(acct.addresses || {}).map(([id, a]) => '<div class="box" style="margin:8px 0;padding:10px;background:var(--bg)"><div class="row"><b>' + esc(a.label) + '</b><button class="del" onclick="acctDelAddr(\'' + esc(id) + '\')">🗑</button></div><span class="mut">' + esc([a.street, a.bName, a.bNo && ('No ' + a.bNo), a.floor && ('Floor ' + a.floor), a.apt && ('Apt ' + a.apt), a.area, a.city].filter(Boolean).join(', ')) + '</span>' + (typeof a.lat === 'number' ? '<br><a href="https://maps.google.com/?q=' + a.lat + ',' + a.lng + '" target="_blank" rel="noopener">📍 On map</a>' : '') + '</div>').join('');
+    b.innerHTML = '<div class="box" id="acctDotBox"><div id="acctDot"></div></div><div class="box"><div class="row"><h2>👤 ' + esc(acct.name || 'My account') + '</h2><button class="ghost" onclick="acctOut()">Log out</button></div><p class="mut" style="margin:0">' + esc(cu.email) + ' ✅</p>'
+      + '<div class="f"><label>Full name *</label><input id="apName" value="' + esc(nm) + '"></div><div class="f"><label>Phone *</label><input id="apPhone" type="tel" value="' + esc(acct.phone) + '"></div><button onclick="acctSaveProfile()" style="width:100%;margin-top:8px">Save</button></div>'
+      + '<div class="box"><h2>📍 My addresses</h2>' + (acct.name ? (list || '<p class="mut">No saved addresses yet.</p>') + '<h3 style="margin:14px 0 4px;font-size:15px">Add an address</h3><div class="f"><label>Name it (Home, Work...) *</label><input id="adLabel" maxlength="40"></div><div class="g2"><div class="f"><label>City</label><select id="adCity"><option value="">Select…</option>' + cities + '</select></div><div class="f"><label>Area</label><input id="adArea"></div><div class="f"><label>Street</label><input id="adStreet"></div><div class="f"><label>Building name</label><input id="adBName"></div><div class="f"><label>Building no</label><input id="adBNo"></div><div class="f"><label>Floor</label><input id="adFloor"></div><div class="f"><label>Apt</label><input id="adApt"></div><div class="f"><label>Notes</label><input id="adNotes"></div></div><p style="margin:8px 0"><button class="ghost" onclick="acctLoc()" style="width:100%">📍 Use my current location</button> <span id="adLocMsg" class="mut"></span></p><button onclick="acctAddAddr()" style="width:100%">Add address</button>' : '<p class="mut">Save your name and phone first, then you can add addresses.</p>') + '</div>';
+    renderDot();
+  }
+
+  window.acctEye = () => { const e = $('auPw'); if (e) e.type = e.type === 'password' ? 'text' : 'password'; };
+  window.lockSwitch = function(el) { if (!el.checked) window.lockAdmin(); else { el.checked = false; openModal('login'); } };
+  window.acctGoogle = async function() {
+    try { setAuthLang(); await signInWithPopup(auth, new GoogleAuthProvider()); toast('Signed in ✅'); } catch (e) { if (e.code !== 'auth/popup-closed-by-user' && e.code !== 'auth/cancelled-popup-request') { console.error(e); aerr(e); } }
+  };
+  window.acctMode = m => { amode = m; renderAcct(); };
+  window.acctSignUp = async function() {
+    const name = val('auName'), em = val('auEmail'), pw = $('auPw').value;
+    if (!name || !em || !pw) return toast('Fill name, email and password');
+    try {
+      setAuthLang();
+      const cr = await createUserWithEmailAndPassword(auth, em, pw);
+      try { localStorage.setItem('dotName', name); } catch (e) {}
+      toast('Account created ✅ We are emailing you a 6-digit code');
+    } catch (e) { console.error(e); aerr(e); }
+  };
+  window.acctSignIn = async function() {
+    const em = val('auEmail'), pw = $('auPw').value;
+    if (!em || !pw) return toast('Enter email and password');
+    try { const rm = $('auRem'); await setPersistence(auth, !rm || rm.checked ? browserLocalPersistence : browserSessionPersistence); await signInWithEmailAndPassword(auth, em, pw); toast('Signed in ✅'); } catch (e) { aerr(e); }
+  };
+  window.acctReset = async function() {
+    const em = val('auEmail'); if (!em) return toast('Type your email first');
+    try { setAuthLang(); await sendPasswordResetEmail(auth, em); toast('Reset link sent 📧 (check Spam too)'); } catch (e) { aerr(e); }
+  };
+  window.acctResend = async function() {
+    try { setAuthLang(); await sendEmailVerification(auth.currentUser); toast('Verification email sent again 📧'); } catch (e) { aerr(e); }
+  };
+  window.acctReload = async function() {
+    try {
+      await auth.currentUser.reload();
+      try { await auth.currentUser.getIdToken(true); } catch (e) {}
+      if (auth.currentUser.emailVerified) { toast('Email verified ✅'); acctAuth(auth.currentUser); } else toast('Not verified yet. Open the link in the email first.');
+    } catch (e) { aerr(e); }
+  };
+  window.acctOut = async function() { try { await signOut(auth); } catch (e) {} toast('Logged out'); switchView('shop'); };
+  window.acctSaveProfile = async function() {
+    const name = val('apName'), phone = val('apPhone');
+    if (!name) return toast('Enter your name');
+    try { await set(ref(db, 'users/' + cu.uid), { name: name.slice(0, 100), phone: phone.slice(0, 30), ...(Object.keys(acct.addresses || {}).length ? { addresses: acct.addresses } : {}) }); toast('Saved ✅'); } catch (e) { toast('Error: ' + (e.code || e.message)); }
+  };
+  window.acctLoc = function() {
+    const m = $('adLocMsg');
+    if (!navigator.geolocation) return toast('Location is not supported on this device');
+    m.textContent = 'Getting location...';
+    navigator.geolocation.getCurrentPosition(p => { aLoc = { lat: Math.round(p.coords.latitude * 1e6) / 1e6, lng: Math.round(p.coords.longitude * 1e6) / 1e6 }; m.textContent = '✅ Location captured'; }, () => { m.textContent = ''; toast('Could not get location. Allow location access and try again.'); }, { enableHighAccuracy: true, timeout: 15000 });
+  };
+  window.acctAddAddr = async function() {
+    const label = val('adLabel'); if (!label) return toast('Give the address a name (Home, Work...)');
+    if (Object.keys(acct.addresses || {}).length >= 10) return toast('Maximum 10 addresses');
+    const a = { label: label.slice(0, 40), city: $('adCity').value.slice(0, 100), area: val('adArea').slice(0, 100), street: val('adStreet').slice(0, 150), bName: val('adBName').slice(0, 100), bNo: val('adBNo').slice(0, 50), floor: val('adFloor').slice(0, 50), apt: val('adApt').slice(0, 50), notes: val('adNotes').slice(0, 300) };
+    if (aLoc) { a.lat = aLoc.lat; a.lng = aLoc.lng; }
+    try { await set(ref(db, 'users/' + cu.uid + '/addresses/' + push(ref(db, 'users/' + cu.uid + '/addresses')).key), a); aLoc = null; toast('Address added ✅'); } catch (e) { toast('Error: ' + (e.code || e.message)); }
+  };
+  window.acctDelAddr = async function(id) {
+    if (!confirm('Delete this address?')) return;
+    try { await remove(ref(db, 'users/' + cu.uid + '/addresses/' + id)); } catch (e) { toast('Error deleting'); }
+  };
+
+  // ===== Dot OTP =====
+  const OTPERR = { 'not-configured': 'The verification service is not set up yet. Please contact the store.', wait: 'Please wait a moment before asking for a new code.', 'too-many': 'Too many codes requested for this email. Try again in an hour.', wrong: 'Wrong code. Try again.', expired: 'This code expired. Press Resend to get a new one.', locked: 'Too many wrong attempts. Press Resend to get a new code.', 'invalid-token': 'Your session expired. Sign out and sign in again.', net: 'Could not reach the verification service. Try again.', server: 'Something went wrong. Try again.', 'no-email': 'This account has no email.' };
+  const K_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M10.8 12.2 20 3m-4 4 3 3m-6-1 2 2"/></svg>';
+  const S_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>';
+  const C_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>';
+
+  async function otpCall(action, extra) {
+    if (!/^https:\/\/script\.google\.com\//.test(cfg.otpUrl || '')) throw new Error('not-configured');
+    const idToken = await auth.currentUser.getIdToken();
+    const r = await fetch(cfg.otpUrl, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ action, idToken, ...(extra || {}) }) });
+    return await r.json();
+  }
+  function otpMsg(m, cls) { const e = $('otpM'); if (e) { e.textContent = m; e.className = 'otp-m ' + (cls || ''); } }
+
+  function renderOTP(b) {
+    const g = (cu.providerData || []).some(p => p.providerId === 'google.com');
+    if (g) { b.innerHTML = '<div class="box"><p class="mut">Verifying your Google account...</p></div>'; if (!otpAsked[cu.uid]) { otpAsked[cu.uid] = 1; otpSend(); } return; }
+    b.innerHTML = '<div class="otp-wrap"><div class="otp-card" id="otpCard"><div class="otp-ic" id="otpIc">' + K_ICON + '</div><h2 class="otp-t" id="otpT">Verify <span>OTP</span></h2><p class="otp-s" id="otpS">Enter the 6-digit security code sent to <b>' + esc(cu.email) + '</b></p>'
+      + '<div class="otp-st" id="otpSt"><div class="otp-boxes" id="otpBoxes" dir="ltr">' + [0, 1, 2, 3, 4, 5].map(i => '<input class="otp-in" type="text" inputmode="numeric" autocomplete="' + (i ? 'off' : 'one-time-code') + '" maxlength="1" aria-label="Digit ' + (i + 1) + '">').join('') + '</div><div class="otp-orb" id="otpOrb"></div><div class="otp-ring" id="otpRing"></div><div class="otp-sq" id="otpSq"><i></i></div><div class="otp-ok" id="otpOk">' + C_ICON + '</div></div>'
+      + '<div class="otp-m" id="otpM"></div><p class="otp-rs">Didn\'t receive the code? <button id="otpRs" disabled onclick="otpSend()">Resend in 01:00</button></p>'
+      + '<button class="otp-btn" id="otpBtn" onclick="otpVerify()">Verify &amp; Proceed →</button><div class="otp-alt"><button onclick="acctOut()">Use another account</button></div></div></div>';
+    otpBind(); startOtpTimer();
+    if (!otpAsked[cu.uid]) { otpAsked[cu.uid] = 1; otpSend(); }
+  }
+
+  function otpBind() {
+    const ins = [...document.querySelectorAll('#otpBoxes .otp-in')];
+    ins.forEach((el, i) => {
+      el.addEventListener('input', () => { el.value = el.value.replace(/\D/g, '').slice(-1); if (el.value && ins[i + 1]) ins[i + 1].focus(); });
+      el.addEventListener('keydown', e => {
+        if (e.key === 'Backspace' && !el.value && ins[i - 1]) { ins[i - 1].focus(); ins[i - 1].value = ''; }
+        else if (e.key === 'Enter') otpVerify();
+        else if (e.key === 'ArrowLeft' && ins[i - 1]) ins[i - 1].focus();
+        else if (e.key === 'ArrowRight' && ins[i + 1]) ins[i + 1].focus();
+      });
+      el.addEventListener('paste', e => { const d = ((e.clipboardData || window.clipboardData).getData('text') || '').replace(/\D/g, '').slice(0, 6); if (!d) return; e.preventDefault(); d.split('').forEach((ch, k) => { if (ins[k]) ins[k].value = ch; }); ins[Math.min(d.length, 5)].focus(); });
+      el.addEventListener('focus', () => el.select());
+    });
+    if (ins[0]) ins[0].focus();
+  }
+
+  function startOtpTimer() {
+    clearInterval(otpTick);
+    const f = () => {
+      const b = $('otpRs'); if (!b) { clearInterval(otpTick); return; }
+      const at = Number(ssGet('otpAt_' + (cu && cu.uid)) || 0), left = Math.max(0, 60 - Math.floor((Date.now() - at) / 1000));
+      b.disabled = left > 0; b.textContent = left > 0 ? 'Resend in 00:' + String(left).padStart(2, '0') : 'Resend code';
+    };
+    f(); otpTick = setInterval(f, 1000);
+  }
+
+  window.otpSend = async function() {
+    if (!cu) return;
+    otpMsg('Sending code...', '');
+    try {
+      const r = await otpCall('send');
+      if (r.verified) return otpMsg('', '');
+      if (r.ok) { ssSet('otpAt_' + cu.uid, Date.now()); otpMsg('Code sent to ' + cu.email + ' 📧 (check Spam too)', 'ok'); startOtpTimer(); }
+      else if (r.error === 'wait') { ssSet('otpAt_' + cu.uid, Date.now() - (60 - (r.wait || 60)) * 1000); startOtpTimer(); otpMsg('A code was already sent. Check your inbox (and Spam).', 'ok'); }
+      else otpMsg(OTPERR[r.error] || 'Could not send the code.', 'err');
+    } catch (e) { otpMsg(OTPERR[e.message === 'not-configured' ? 'not-configured' : 'net'], 'err'); }
+  };
+
+  function otpFail(msg, clear) {
+    const r = $('otpBoxes');
+    if (r) r.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-8px)' }, { transform: 'translateX(8px)' }, { transform: 'translateX(-5px)' }, { transform: 'translateX(0)' }], { duration: 350 });
+    if (clear) { const ins = [...document.querySelectorAll('#otpBoxes .otp-in')]; ins.forEach(i => i.value = ''); if (ins[0]) ins[0].focus(); }
+    otpMsg(msg, 'err');
+  }
+
+  function otpStart(ins) {
+    const st = $('otpSt'), orb = $('otpOrb'), sr = st.getBoundingClientRect(), cx = sr.left + sr.width / 2, cy = sr.top + sr.height / 2, tiles = [];
+    orb.innerHTML = '';
+    ins.forEach(el => {
+      const r = el.getBoundingClientRect(), d = document.createElement('div');
+      d.className = 'otp-tile'; d.textContent = el.value;
+      d.style.width = r.width + 'px'; d.style.height = r.height + 'px'; d.style.left = (-r.width / 2) + 'px'; d.style.top = (-r.height / 2) + 'px';
+      d._dx = r.left + r.width / 2 - cx; d._dy = r.top + r.height / 2 - cy;
+      orb.appendChild(d); tiles.push(d);
+    });
+    $('otpBoxes').style.visibility = 'hidden';
+    tiles.forEach((d, i) => {
+      const a = (i / tiles.length) * Math.PI * 2 - Math.PI / 2, x = Math.cos(a) * 50, y = Math.sin(a) * 50, rot = 40 + i * 35;
+      d._end = 'translate(' + x + 'px,' + y + 'px) rotate(' + rot + 'deg)';
+      d.animate([{ transform: 'translate(' + d._dx + 'px,' + d._dy + 'px) rotate(0deg)' }, { transform: d._end }], { duration: 650, fill: 'forwards', easing: 'cubic-bezier(.2,.8,.2,1)' });
+    });
+    const spin = orb.animate([{ transform: 'rotate(0deg)' }, { transform: 'rotate(360deg)' }], { duration: 1400, iterations: Infinity, delay: 500 });
+    return { tiles, orb, spin };
+  }
+  function otpStop(a) {
+    a.spin.cancel(); a.tiles.forEach(t => t.getAnimations().forEach(x => x.cancel()));
+    $('otpOrb').innerHTML = ''; $('otpBoxes').style.visibility = '';
+  }
+  async function otpSuccess(a) {
+    a.tiles.forEach(d => d.animate([{ transform: d._end }, { transform: 'translate(0px,0px) rotate(0deg) scale(.8)' }], { duration: 600, fill: 'forwards', easing: 'ease-in' }));
+    await sleep(620);
+    a.tiles.forEach(d => d.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 200, fill: 'forwards' }));
+    a.spin.cancel();
+    const ring = $('otpRing'), sq = $('otpSq'), ok = $('otpOk');
+    ring.animate([{ width: '20px', height: '20px', opacity: 0 }, { width: '120px', height: '120px', opacity: 1 }], { duration: 550, fill: 'forwards', easing: 'cubic-bezier(.2,.8,.2,1)' });
+    sq.animate([{ opacity: 0, transform: 'translate(-50%,-50%) scale(.4)' }, { opacity: 1, transform: 'translate(-50%,-50%) scale(1)' }], { duration: 450, fill: 'forwards' });
+    const ic = $('otpIc'); ic.className = 'otp-ic g'; ic.innerHTML = S_ICON;
+    $('otpT').innerHTML = 'Verified <span class="g">Successfully</span>'; $('otpS').textContent = 'Your security verification code has been confirmed.';
+    $('otpCard').classList.add('done');
+    await sleep(800);
+    ring.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250, fill: 'forwards' });
+    sq.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250, fill: 'forwards' });
+    ok.animate([{ opacity: 0, transform: 'translate(-50%,-50%) scale(.5)' }, { opacity: 1, transform: 'translate(-50%,-50%) scale(1)' }], { duration: 420, fill: 'forwards', easing: 'cubic-bezier(.3,1.6,.5,1)' });
+    const btn = $('otpBtn'); btn.className = 'otp-btn okk'; btn.innerHTML = '🛡 Verified &amp; Secured';
+    await sleep(1600);
+  }
+
+  window.otpVerify = async function() {
+    if (otpBusy || !cu) return;
+    const ins = [...document.querySelectorAll('#otpBoxes .otp-in')], code = ins.map(i => i.value).join('');
+    if (!/^\d{6}$/.test(code)) return otpFail('Enter all 6 digits');
+    otpBusy = true;
+    const btn = $('otpBtn'); btn.disabled = true; btn.innerHTML = '<span class="otp-sp"></span> Verifying Code...';
+    otpMsg('', '');
+    const anim = otpStart(ins), t0 = Date.now();
+    let res;
+    try { res = await otpCall('verify', { code }); } catch (e) { res = { ok: false, error: e.message === 'not-configured' ? 'not-configured' : 'net' }; }
+    await sleep(Math.max(0, 1700 - (Date.now() - t0)));
+    if (res && res.ok) { await otpSuccess(anim); ov = true; otpBusy = false; renderAcct(); }
+    else { otpStop(anim); otpBusy = false; btn.disabled = false; btn.innerHTML = 'Verify &amp; Proceed →'; otpFail(OTPERR[res && res.error] || 'Verification failed', res && res.error === 'wrong'); }
+  };
+
+  function renderSignups(s) {
+    const box = $('suList'), c = $('suc'); if (!box) return;
+    const rows = Object.values(s.val() || {}).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+    if (c) c.textContent = rows.length ? '(' + rows.length + ' total · ' + rows.filter(r => r.verified).length + ' verified)' : '';
+    const fmt = x => x ? new Date(x).toLocaleString() : '-';
+    box.innerHTML = rows.length ? '<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:13px"><thead><tr><th style="text-align:start;padding:4px">Email</th><th style="text-align:start;padding:4px">Signed up</th><th style="text-align:start;padding:4px">Status</th></tr></thead><tbody>' + rows.map(r => '<tr style="border-top:1px solid var(--bd)"><td style="padding:6px 4px;word-break:break-all">' + esc(r.email) + '</td><td style="padding:6px 4px;white-space:nowrap">' + esc(fmt(r.createdAt)) + '</td><td style="padding:6px 4px;white-space:nowrap">' + (r.verified ? '✅ ' + esc(fmt(r.verifiedAt)) : '⏳ pending') + '</td></tr>').join('') + '</tbody></table></div>' : 'No sign-ups yet.';
+  }
+
+  // ===== Dot loyalty =====
+  const DOT_DEF = { a: 5, ap: 10, b: 10, bp: 25, days: 30 };
+  let dotCfg = { ...DOT_DEF };
+  const dotRulesText = () => `Every delivered order earns you a stamp. At ${dotCfg.a} stamps you get ${dotCfg.ap}% off, at ${dotCfg.b} stamps you get ${dotCfg.bp}% off, then the card starts again.`;
+  onValue(ref(db, 'dot/config'), s => {
+    dotCfg = { ...DOT_DEF, ...(s.val() || {}) };
+    [['dtA', 'a'], ['dtAP', 'ap'], ['dtB', 'b'], ['dtBP', 'bp'], ['dtD', 'days']].forEach(([i, k]) => { const e = $(i); if (e && document.activeElement !== e) e.value = dotCfg[k]; });
+    const r = $('dotRules'); if (r) r.textContent = dotRulesText();
+    dotMini();
+  }, () => {});
+
+  window.saveDot = async function() {
+    const n = i => parseInt($(i).value, 10);
+    const c = { a: n('dtA'), ap: n('dtAP'), b: n('dtB'), bp: n('dtBP'), days: n('dtD') };
+    if ([c.a, c.ap, c.b, c.bp, c.days].some(x => !Number.isInteger(x) || x < 1)) return toast('Fill all Dot fields with whole numbers');
+    if (c.a >= c.b) return toast('Second reward must be at a higher stamp number');
+    if (c.ap > 100 || c.bp > 100) return toast('Discount cannot exceed 100%');
+    try { await set(ref(db, 'dot/config'), c); toast('Dot rules saved ✅'); } catch (e) { toast('Error: ' + (e.code || e.message)); }
+  };
+
+  async function awardStamp(code) {
+    try {
+      const o = orders.find(x => x.code === code);
+      if (!o) return;
+      const pk = o.uid;
+      if (!pk) return toast('Dot: guest order (customer not logged in), no stamp');
+      const claim = await runTransaction(ref(db, 'dot/awarded/' + code), cur => cur ? undefined : { pk, at: Date.now() });
+      if (!claim.committed) return;
+      const r = await runTransaction(ref(db, 'dot/cards/' + pk), cur => { cur = cur || {}; return { ...cur, name: String(o.name || '').slice(0, 100), stamps: (cur.stamps || 0) + 1, updatedAt: Date.now() }; });
+      const n = r.snapshot.val().stamps, pos = ((n - 1) % dotCfg.b) + 1;
+      const pct = pos === dotCfg.a ? dotCfg.ap : pos === dotCfg.b ? dotCfg.bp : 0;
+      let msg = 'Dot: stamp added (' + pos + '/' + dotCfg.b + ')';
+      if (pct) {
+        const rnd = Array.from(crypto.getRandomValues(new Uint8Array(6)), b => 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[b % 32]).join('');
+        const dc = 'DOT' + rnd, at = Date.now(), exp = at + dotCfg.days * 86400000;
+        await set(ref(db, 'discounts/' + dc), { code: dc, percent: pct, createdAt: at, expiresAt: exp });
+        await set(ref(db, 'dot/cards/' + pk + '/rewards/' + dc), { code: dc, percent: pct, at, expiresAt: exp });
+        msg += ' + ' + pct + '% reward created';
+      }
+      toast(msg + ' ⭐');
+    } catch (e) { console.error(e); toast('Dot error: ' + (e.code || e.message)); }
+  }
+
+  function dotCardHTML() {
+    const c = dcard || { stamps: 0 }, n = c.stamps || 0, filled = n === 0 ? 0 : ((n - 1) % dotCfg.b) + 1;
+    let h = '<p class="mut" style="margin:0 0 8px">' + esc(dotRulesText()) + '</p><div class="row"><b>' + esc(acct.name || c.name || 'My Dot card') + '</b><span class="mut">' + filled + ' / ' + dotCfg.b + '</span></div><div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0">';
+    for (let i = 1; i <= dotCfg.b; i++) {
+      const on = i <= filled, gift = i === dotCfg.a ? dotCfg.ap + '%' : i === dotCfg.b ? dotCfg.bp + '%' : '';
+      h += '<div style="aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:13px;border:2px ' + (on ? 'solid var(--ac)' : 'dashed var(--bd)') + ';background:' + (on ? 'var(--ac)' : 'transparent') + ';color:' + (on ? '#14213d' : 'var(--mut)') + '">' + (on ? '★' : gift) + '</div>';
+    }
+    h += '</div>';
+    const rw = Object.values(c.rewards || {}).filter(x => x.expiresAt > Date.now()).sort((a, b) => b.at - a.at);
+    return h + (rw.length ? '<b>Your reward codes</b>' + rw.map(x => '<div class="row" style="margin-top:6px"><span><span class="code">' + esc(x.code) + '</span> — ' + esc(x.percent) + '% off</span><span class="mut">until ' + new Date(x.expiresAt).toLocaleDateString() + '</span></div>').join('') + '<p class="mut">Paste the code in your cart to use it.</p>' : '<p class="mut">No active reward codes yet.</p>');
+  }
+  function renderDot() {
+    const live = !!cu && ov, body = $('dotBody'), mini = $('dotMini'), ad = $('acctDot');
+    if (body) body.innerHTML = live ? dotCardHTML() : (cu ? '<p class="mut">Confirm your email code first, then your Dot card appears here.</p>' : '<p class="mut">Log in to your account and your Dot card shows up here automatically. Every delivered order earns you a stamp.</p><button onclick="switchView(\'acct\')" style="width:100%">Log in / Sign up</button>');
+    if (ad) ad.innerHTML = live ? '<h2 style="margin-top:0">⭐ Dot</h2>' + dotCardHTML() : '';
+    if (mini) {
+      const n = live ? ((dcard && dcard.stamps) || 0) : 0, filled = n === 0 ? 0 : ((n - 1) % dotCfg.b) + 1;
+      const next = filled < dotCfg.a ? [dotCfg.a, dotCfg.ap] : [dotCfg.b, dotCfg.bp];
+      const rc = live && dcard ? Object.values(dcard.rewards || {}).filter(x => x.expiresAt > Date.now()).length : 0;
+      mini.innerHTML = live ? '<div class="row"><b>⭐ Dot: ' + filled + ' / ' + dotCfg.b + ' stamps</b><span class="mut">' + (rc ? rc + ' reward code(s) ready' : (next[0] - filled) + ' more for ' + next[1] + '% off') + '</span></div>' : '<div class="row"><b>⭐ Dot Rewards</b><span class="mut">' + (cu ? 'Confirm your email to start' : 'Log in to collect stamps') + '</span></div>';
+      mini.style.display = ''; mini.classList.remove('hide');
+    }
+  }
+  function dotMini() { renderDot(); }
+  window.dotAuto = renderDot;
+
+  window.delDiscount = async function(code) {
+    if (!confirm('Delete code ' + code + '?')) return;
+    try { await remove(ref(db, 'discounts/' + code)); toast('Code deleted'); }
+    catch (e) { toast('Error deleting code'); }
+  };
+
+  function renderDiscounts() {
+    const el = $('dcList');
+    if (!el) return;
+    const l = Object.values(discounts).sort((a, b) => b.createdAt - a.createdAt);
+    el.innerHTML = l.map(d => {
+      const left = d.expiresAt - Date.now(), live = left > 0;
+      const n = Object.keys(discUses[d.code] || {}).length;
+      const info = live ? Math.ceil(left / 86400000) + ' day(s) left' : 'Expired';
+      return `<div class="row"><span><span class="code">${esc(d.code)}</span> — ${esc(d.percent)}% <span class="mut">· ${info} · used ${n}×</span></span><span><span class="tag ${live ? 'delivered' : 'cancelled'}">${live ? 'Active' : 'Expired'}</span> <button class="del" onclick="delDiscount('${sid(d.code)}')">🗑</button></span></div>`;
+    }).join('') || '<p class="mut">No codes yet.</p>';
+  }
+
+  function renderCart() {
+    // تنظيف السلة من المنتجات المحذوفة تلقائياً
+    Object.keys(cart).forEach(id => {
+      if (!products.some(p => p.id === id)) delete cart[id];
+    });
+    const ids = Object.keys(cart);
+    let sub = 0, n = 0;
+    const cl = $('cartList');
+    if (cl) cl.innerHTML = ids.map(id => {
+      const p = products.find(x => x.id === id), q = cart[id];
+      sub += p.price * q;
+      n += q;
+      return `<div class="row"><span>${esc(p.name)}</span><span style="display:flex;gap:6px;align-items:center"><button class="ghost" onclick="chgCart('${sid(id)}',-1)">−</button><b>${q}</b><button class="ghost" onclick="chgCart('${sid(id)}',1)">+</button> ${money(p.price * q)} <button class="ghost" onclick="rmCart('${sid(id)}')">✕</button></span></div>`;
+    }).join('') || '<p class="mut">Cart is empty.</p>';
+    if (!ids.length) applied = null;
+    const dAmt = applied ? discAmount(sub, applied.percent) : 0;
+    const sh = sub > 0 ? shipFor($('cCity') ? $('cCity').value : '', sub - dAmt) : 0;
+    const total = sub > 0 ? sub - dAmt + sh : 0;
+    if ($('shipAmt')) $('shipAmt').textContent = sub > 0 ? (sh ? money(sh) + ' EGP' : 'Free') : '—';
+    const dr = $('discRow');
+    if (dr) {
+      dr.classList.toggle('hide', !applied);
+      if (applied) { $('discLbl').textContent = 'Discount ' + applied.code + ' (-' + applied.percent + '%)'; $('discAmt').textContent = '-' + money(dAmt) + ' EGP'; }
+    }
+    if (!applied) dmsg('');
+    const tot = $('total');
+    if (tot) tot.textContent = money(total);
+    const cc = $('cc');
+    if (cc) cc.textContent = n;
+    const c2 = $('cc2');
+    if (c2) { const ch = c2.textContent !== String(n); c2.textContent = n; c2.classList.toggle('hide', !n); if (ch) { c2.style.animation = 'none'; void c2.offsetWidth; c2.style.animation = ''; } }
+  }
+
+  window.togglePayProof = function() {
+    const isWallet = $('cPay').value === 'wallet';
+    const pb = $('proofBox');
+    if (pb) pb.classList.toggle('hide', !isWallet);
+  };
+
+  const itemsHtml = (o) => (o.items || []).map(i => `<div class="row"><span>${esc(i.name)} × ${num(i.qty)}</span><span>${money(i.price * i.qty)}</span></div>`).join('');
+  function timeline(o) {
+    const s = st(o);
+    if (s === 'cancelled') return '<p><span class="tag cancelled">Cancelled</span></p>';
+    const idx = STEPS.findIndex(x => x[0] === s);
+    return `<div class="tl">${STEPS.map((x, i) => `<div class="${i <= idx ? 'on' : ''}">${x[1]}</div>`).join('')}</div>`;
+  }
+
+  const RL = { requested: 'Return requested', approved: 'Return approved', rejected: 'Return rejected' };
+  function retHtml(o) {
+    const r = rets[o.code];
+    if (r) return `<p><span class="tag ${rOk(r.status)}">${RL[rOk(r.status)]}</span> <span class="mut">${esc(r.reason)}</span></p>`;
+    return st(o) === 'delivered' ? `<button class="ghost" onclick="reqReturn('${sid(o.code)}')">↩ Request a return</button>` : '';
+  }
+  window.reqReturn = async function(code) {
+    const reason = (prompt('Why do you want to return this order?') || '').trim();
+    if (!reason) return;
+    try { await set(ref(db, 'returns/' + code), { code, reason: reason.slice(0, 500), status: 'requested', at: Date.now() }); toast('Return request sent ✅'); }
+    catch (e) { toast('Could not send: ' + (e.code || e.message)); }
+  };
+  window.sendComplaint = async function() {
+    const name = val('kName'), phone = val('kPhone'), msg = val('kMsg');
+    if (!name || !phone || !msg) return toast('Please fill name, phone and complaint');
+    const b = $('kBtn'); b.disabled = true;
+    try {
+      await set(push(ref(db, 'complaints')), { name: name.slice(0, 100), phone: phone.slice(0, 30), code: val('kCode').toUpperCase().slice(0, 40), msg: msg.slice(0, 1000), at: Date.now() });
+      ['kName', 'kPhone', 'kCode', 'kMsg'].forEach(i => $(i).value = '');
+      toast('Complaint sent, we will contact you ✅');
+    } catch (e) { toast('Error: ' + (e.code || e.message)); }
+    b.disabled = false;
+  };
+
+  function renderMine() {
+    const l = Object.values(mine).sort((a, b) => b.at - a.at);
+    const ml = $('mineList');
+    if (!ml) return;
+    ml.innerHTML = l.map(o => `<div class="box"><div class="row"><span class="code">${esc(o.code)}</span><span class="tag ${st(o)}">${LABEL[st(o)]}</span></div>${timeline(o)}<p class="mut">${new Date(o.at).toLocaleString()}</p>${itemsHtml(o)}${discHtml(o)}<p class="mut">Delivery Fee: ${money(o.ship === undefined ? SHIP : o.ship)} EGP</p><p><b>Total: ${money(o.total)} EGP</b></p>${retHtml(o)}</div>`).join('') || '<p class="mut" style="text-align:center">No orders tracked.</p>';
+  }
+
+  let rAll = {};
+  function adminRet(o) {
+    const r = rAll[o.code];
+    if (!r) return '';
+    const b = x => `<button class="${r.status === x ? 'ok' : 'ghost'}" onclick="setReturn('${sid(o.code)}','${x}')">${x[0].toUpperCase() + x.slice(1)}</button>`;
+    return `<div class="box" style="margin:8px 0;padding:10px;background:var(--bg)"><b>↩ Return request</b> <span class="tag ${rOk(r.status)}">${RL[rOk(r.status)]}</span><br><span class="mut">${esc(r.reason)} · ${new Date(r.at).toLocaleDateString()}</span><div class="sbtn">${b('requested')}${b('approved')}${b('rejected')}</div></div>`;
+  }
+  window.setReturn = async function(code, status) {
+    try { await update(ref(db, 'returns/' + code), { status }); toast('Updated ✅'); } catch (e) { toast('Error updating'); }
+  };
+  window.setFilter = function(k) { filter = k; renderOrders(); };
+  window.renderOrders = function() {
+    const open = orders.filter(o => st(o) === 'placed').length;
+    const oc = $('oc');
+    if (oc) oc.textContent = open ? '(' + open + ')' : '';
+    if (!isAdmin) { const ol = $('orderList'); if (ol) ol.innerHTML = ''; return; }
+    const chips = $('chips');
+    if (chips) chips.innerHTML = ['all', 'placed', 'confirmed', 'shipped', 'out', 'delivered', 'cancelled'].map(k => {
+      const n = k === 'all' ? orders.length : orders.filter(o => st(o) === k).length;
+      return `<button class="${filter === k ? '' : 'ghost'}" onclick="setFilter('${k}')">${k === 'all' ? 'All' : LABEL[k]} (${n})</button>`;
+    }).join('');
+    const qEl = $('oSearch'), q = qEl ? qEl.value.trim().toLowerCase() : '';
+    const list = orders.filter(o => (filter === 'all' || st(o) === filter) && (!q || (o.code + o.name + o.phone).toLowerCase().includes(q)));
+    const orderList = $('orderList');
+    if (orderList) orderList.innerHTML = list.map(o => {
+      const s = st(o), a = o.addr || {};
+      const fullAddr = `${a.city || ''}, ${a.area ? a.area + ', ' : ''}${a.street || ''}, Building: ${a.bName || '-'}, No: ${a.bNo || ''}, Floor: ${a.floor || ''}, Apt: ${a.apt || ''}` + (a.notes ? ` | Notes: ${a.notes}` : '');
+      return `<div class="box"><div class="row"><span class="code">${esc(o.code)}</span><span class="tag ${s}">${LABEL[s]}</span></div>
+      <p><b>${esc(o.name)}</b><br><span class="mut">📞 ${esc(o.phone)} ${o.email ? '· ✉️ ' + esc(o.email) : ''}</span><br>📍 <b>Address:</b> ${esc(fullAddr)}<br><span class="mut">💳 Payment: ${o.pay === 'wallet' ? 'Digital Wallet / InstaPay — confirm the money arrived in your app first' : 'Cash on Delivery'}</span></p>
+      ${proofOk(o.proof) ? `<p><b>Payment Screenshot:</b><br><a href="${esc(proofOk(o.proof))}" target="_blank" rel="noopener"><img src="${esc(proofOk(o.proof))}" style="max-width:120px;border-radius:8px;margin-top:6px"></a></p>` : ''}
+      ${itemsHtml(o)}${discHtml(o)}<p class="mut">Delivery Fee: ${money(o.ship === undefined ? SHIP : o.ship)} EGP</p><p><b>Total: ${money(o.total)} EGP</b></p>${Math.abs(calcTotal(o) - num(o.total)) > 0.01 ? `<p style='color:var(--no);font-weight:700'>⚠ Total mismatch! Real total from items = ${money(calcTotal(o))} EGP. Check before shipping.</p>` : ''}${adminRet(o)}<div class="sbtn"><button class="ghost" onclick="dlInvoice('${sid(o.code)}')">🧾 Invoice</button>
+      ${STEPS.map(x => `<button class="${s === x[0] ? 'ok' : 'ghost'}" onclick="setStatus('${sid(o.code)}','${x[0]}')">${x[1]}</button>`).join('')}
+      <button class="${s === 'cancelled' ? 'del' : 'ghost'}" onclick="setStatus('${sid(o.code)}','cancelled')">Cancel</button><button class="del" onclick="delOrder('${sid(o.code)}')">🗑</button></div></div>`;
+    }).join('') || '<p class="mut" style="text-align:center">No orders.</p>';
+  };
+
+  window.addCart = function(id) {
+    const pp = products.find(x => x.id === id); if (pp && isSold(pp)) return toast('Sold out');
+    if (pp && typeof pp.stock === 'number' && (cart[id] || 0) >= pp.stock) return toast('No more stock available');
+    cart[id] = Math.min(20, (cart[id] || 0) + 1); renderCart(); toast('Added to cart 🛒');
+    const ev = window.event, b = ev && ev.target && ev.target.closest ? ev.target.closest('button') : null;
+    if (navigator.vibrate) navigator.vibrate(12);
+    if (!b) return;
+    const t = $(innerWidth < 768 ? 'bn-cart' : 'nav-cart');
+    if (t) {
+      const a = b.getBoundingClientRect(), c = t.getBoundingClientRect(), f = document.createElement('div');
+      f.className = 'fly'; f.textContent = '🛍️'; f.style.cssText = `left:${a.left + a.width / 2 - 13}px;top:${a.top}px`;
+      document.body.appendChild(f);
+      requestAnimationFrame(() => { f.style.transform = `translate(${c.left + c.width / 2 - a.left - a.width / 2}px,${c.top - a.top}px) scale(.4)`; f.style.opacity = '.2'; });
+      setTimeout(() => { f.remove(); t.classList.add('bump'); setTimeout(() => t.classList.remove('bump'), 400); }, 650);
+    }
+    if (!b.dataset.t) { const o = b.textContent; b.dataset.t = 1; b.textContent = '✓ Added'; b.classList.add('okb'); setTimeout(() => { b.textContent = o; b.classList.remove('okb'); delete b.dataset.t; }, 1000); }
+  };
+  document.addEventListener('pointerdown', e => {
+    const b = e.target.closest && e.target.closest('button');
+    if (!b || b.disabled || b.closest('.hadm')) return;
+    if (b.closest('#bnav') && navigator.vibrate) navigator.vibrate(8);
+    const r = b.getBoundingClientRect(), d = Math.max(r.width, r.height), sp = document.createElement('span');
+    sp.className = 'rip'; sp.style.cssText = `width:${d}px;height:${d}px;left:${e.clientX - r.left - d / 2}px;top:${e.clientY - r.top - d / 2}px`;
+    b.appendChild(sp); setTimeout(() => sp.remove(), 600);
+  });
+  window.rmCart = function(id) { delete cart[id]; renderCart(); };
+
+  function imgsOf(p) {
+    let a = p.imgs ? (Array.isArray(p.imgs) ? p.imgs : Object.values(p.imgs)) : [];
+    a = a.map(imgOk).filter(Boolean);
+    if (!a.length && imgOk(p.img)) a = [imgOk(p.img)];
+    return a;
+  }
+
+  let pvId = '', gList = [], gIdx = 0;
+  window.openProduct = function(id) {
+    const p = products.find(x => x.id === id);
+    if (!p) return;
+    pvId = id; gList = imgsOf(p); gIdx = 0;
+    $('pvName').textContent = p.name;
+    $('pvDesc').textContent = p.desc || '';
+    $('pvPrice').textContent = money(p.price) + ' EGP';
+    drawGal();
+    openModal('pview');
+    if (!p.imgs && num(p.n) > 0) get(ref(db, 'productImages/' + id)).then(sn => { if (pvId !== id || !sn.exists()) return; const v = sn.val(); gList = (Array.isArray(v) ? v : Object.values(v)).map(imgOk).filter(Boolean); gIdx = 0; drawGal(); }).catch(() => {});
+  };
+  window.closeProduct = function() { closeModal('pview'); };
+  window.gGo = function(d) {
+    if (gList.length < 2) return;
+    gIdx = (gIdx + d + gList.length) % gList.length;
+    drawGal();
+  };
+  window.gSet = function(i) { gIdx = i; drawGal(); };
+  function drawGal() {
+    const multi = gList.length > 1;
+    $('gal').innerHTML = (gList.length ? `<img src="${esc(gList[gIdx])}">` : '')
+      + (multi ? `<button class="nv pr" onclick="gGo(-1)">‹</button><button class="nv nx" onclick="gGo(1)">›</button><span class="ct">${gIdx + 1} / ${gList.length}</span>` : '');
+    $('ths').innerHTML = multi ? gList.map((u, i) => `<img src="${esc(u)}" class="${i === gIdx ? 'on' : ''}" onclick="gSet(${i})">`).join('') : '';
+  }
+  (function() {
+    let x0 = null;
+    const g = $('gal');
+    g.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+    g.addEventListener('touchend', e => {
+      if (x0 == null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      x0 = null;
+      if (Math.abs(dx) > 40) gGo(dx < 0 ? 1 : -1);
+    });
+    document.addEventListener('keydown', e => {
+      if ($('pview').classList.contains('hide')) return;
+      if (e.key === 'Escape') closeProduct();
+      if (e.key === 'ArrowRight') gGo(1);
+      if (e.key === 'ArrowLeft') gGo(-1);
+    });
+    const inp = $('pImg');
+    if (inp) inp.addEventListener('change', () => {
+      const pv = $('pPrev');
+      pv.innerHTML = '';
+      Array.from(inp.files).slice(0, 6).forEach(f => {
+        const im = document.createElement('img');
+        im.src = URL.createObjectURL(f);
+        pv.appendChild(im);
+      });
+      if (inp.files.length > 6) toast('Only the first 6 images will be used');
+    });
+  })();
+
+  function resize(file, max = 600) {
+    return new Promise((res, rej) => {
+      const img = new Image(), u = URL.createObjectURL(file);
+      img.onload = () => {
+        const k = Math.min(1, max / Math.max(img.width, img.height)), c = document.createElement('canvas');
+        c.width = Math.round(img.width * k);
+        c.height = Math.round(img.height * k);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(u);
+        res(c.toDataURL('image/jpeg', .75));
+      };
+      img.onerror = rej;
+      img.src = u;
+    });
+  }
+
+  const CITIES = ['Cairo', 'Giza', 'Alexandria', 'Qalyubia', 'Sharqia', 'Dakahlia', 'Gharbia', 'Monufia', 'Beheira', 'Kafr El Sheikh', 'Damietta', 'Port Said', 'Ismailia', 'Suez', 'North Sinai', 'South Sinai', 'Fayoum', 'Beni Suef', 'Minya', 'Asyut', 'Sohag', 'Qena', 'Luxor', 'Aswan', 'Red Sea', 'New Valley', 'Matrouh'];
+  const AREAS = {
+    'Cairo': ['Nasr City', 'Heliopolis', 'Maadi', 'New Cairo', 'El Rehab', 'Madinaty', 'El Shorouk', 'Badr City', 'New Capital', 'Mokattam', 'Downtown', 'Zamalek', 'Garden City', 'Manial', 'Shubra', 'Rod El Farag', 'Hadayek El Qobba', 'Zeitoun', 'Matareya', 'Ain Shams', 'El Marg', 'El Salam', 'Abbasia', 'El Nozha', 'Sayeda Zeinab', 'Abdeen', 'Old Cairo', 'Helwan', 'Tora', 'Basateen', 'Dar El Salam', '15th of May City'],
+    'Giza': ['Dokki', 'Mohandessin', 'Agouza', 'Haram', 'Faisal', 'Omraniya', 'Imbaba', 'Boulaq El Dakrour', 'Warraq', 'Giza Square', 'Bein El Sarayat', 'Sheikh Zayed', '6th of October', 'Hadayek October', 'Hadayek El Ahram', 'Hawamdeya', 'Kerdasa', 'Badrashin', 'Saf', 'Ayat', 'Atfih'],
+    'Alexandria': ['Montaza', 'Sidi Bishr', 'Sidi Gaber', 'Smouha', 'Miami', 'Stanley', 'Gleem', 'Roushdy', 'San Stefano', 'Sporting', 'Cleopatra', 'Laurent', 'Fleming', 'Ibrahimia', 'Moharam Bek', 'Karmouz', 'Mansheya', 'Bahary', 'Anfoushi', 'Attarin', 'Wardian', 'Dekheila', 'Agami', 'Hannoville', 'Borg El Arab', 'Amreya', 'Mandara', 'Asafra', 'Maamoura', 'Abu Qir'],
+    'Qalyubia': ['Shubra El Kheima', 'Banha', 'Qalyub', 'Khanka', 'Obour City', 'Shibin El Qanater', 'El Khosous', 'Tukh', 'Kafr Shukr', 'Qaha']
+  };
+  CITIES.forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; $('cCity').appendChild(o); });
+  window.areaChanged = function() { $('areaOtherBox').classList.toggle('hide', $('cArea').value !== '__other'); };
+  window.fillAreas = function() {
+    const a = $('cArea'), city = $('cCity').value, list = AREAS[city] || [];
+    a.innerHTML = '';
+    const add = (v, t) => { const o = document.createElement('option'); o.value = v; o.textContent = t; a.appendChild(o); };
+    if (!city) add('', 'Select city first');
+    else if (list.length) { add('', 'Select area…'); list.forEach(x => add(x, x)); add('__other', 'Other (write it)'); }
+    else add('__other', 'Write your area below');
+    areaChanged(); renderCart();
+  };
+  const areaVal = () => $('cArea').value === '__other' ? val('cAreaOther') : val('cArea');
+  const shipFor = (city, base) => { const f = num(cfg.shipFree); if (f > 0 && base >= f) return 0; const v = parseFloat((city === 'Cairo' || city === 'Giza') ? cfg.shipCG : cfg.shipOther); return isFinite(v) && v >= 0 ? v : SHIP; };
+  const egPhone = p => { let d = String(p || '').replace(/\D/g, ''); if (d.startsWith('0020')) d = d.slice(4); else if (d.startsWith('20') && d.length === 12) d = d.slice(2); if (d.length === 10 && d[0] === '1') d = '0' + d; return /^01[0125]\d{8}$/.test(d) ? d : ''; };
+  const CF = ['cName', 'cPhone', 'cEmail', 'cStreet', 'cBName', 'cBNo', 'cFloor', 'cApt'];
+  const saveCust = () => { try { const o = {}; CF.forEach(i => o[i] = val(i)); o.city = val('cCity'); o.area = areaVal(); localStorage.setItem('cust', JSON.stringify(o)); } catch (e) {} };
+  const loadCust = () => { try { const o = JSON.parse(localStorage.getItem('cust') || 'null'); if (!o) return; CF.forEach(i => { if ($(i) && o[i]) $(i).value = o[i]; }); if (o.city && CITIES.includes(o.city)) { $('cCity').value = o.city; fillAreas(); if (o.area) { if (Array.from($('cArea').options).some(x => x.value === o.area)) $('cArea').value = o.area; else if (Array.from($('cArea').options).some(x => x.value === '__other')) { $('cArea').value = '__other'; $('cAreaOther').value = o.area; areaChanged(); } } } } catch (e) {} };
+  loadCust();
+  window.chgCart = (id, d) => { if (!cart[id]) return; cart[id] += d; if (cart[id] < 1) delete cart[id]; else { const pp = products.find(x => x.id === id), cap = pp && typeof pp.stock === 'number' ? pp.stock : 20; cart[id] = Math.min(20, cap, cart[id]); if (cart[id] < 1) delete cart[id]; } renderCart(); };
+  window.toggleSold = async id => { const p = products.find(x => x.id === id); if (!p) return; try { await update(ref(db, 'products/' + id), { soldOut: !p.soldOut }); } catch (e) { toast('Error'); } };
+  window.setStock = async id => { const v = prompt('New stock quantity (0 = sold out):'); if (v === null) return; const n = Math.floor(Number(v)); if (v.trim() === '' || !(n >= 0) || n > 100000) return toast('Invalid number'); try { await update(ref(db, 'products/' + id), { stock: n, soldOut: false }); toast('Saved ✅'); } catch (e) { toast('Error'); } };
+  window.editItem = async id => { const p = products.find(x => x.id === id); if (!p) return; const nm = prompt('Product name:', p.name); if (nm === null) return; const pr = prompt('Price (EGP):', p.price); if (pr === null) return; const price = Number(pr); if (!nm.trim() || pr.trim() === '' || !(price >= 0)) return toast('Invalid values'); try { await update(ref(db, 'products/' + id), { name: nm.trim().slice(0, 150), price }); toast('Saved ✅'); } catch (e) { toast('Error'); } };
+  window.setCat = i => { catF = i < 0 ? '' : (catList[i] || ''); renderShop(); };
+  window.openPolicy = () => { $('policyTxt').textContent = cfg.policy || "Returns: once your order is delivered you can request a return from 'My orders'. We review every request and contact you.\n\nPrivacy: we use your name, phone and address only to deliver your order. We never sell your data."; openModal('policy'); };
+
+  window.placeOrder = async function() {
+    const its = Object.keys(cart).map(id => {
+      const p = products.find(x => x.id === id);
+      return p && { pid: id, name: p.name, price: p.price, qty: cart[id] };
+    }).filter(Boolean);
+
+    if (!its.length) return toast('Cart is empty');
+    if (its.some(i => { const p = products.find(x => x.id === i.pid); return p && (isSold(p) || (typeof p.stock === 'number' && i.qty > p.stock)); })) return toast('Not enough stock for some items');
+    if (!val('cName') || !val('cPhone') || !val('cCity') || !areaVal() || !val('cStreet') || !val('cBNo') || !val('cFloor') || !val('cApt')) {
+      return toast('Please fill all required fields (*)');
+    }
+    const phoneEg = egPhone(val('cPhone'));
+    if (!phoneEg) return toast('Enter a valid Egyptian mobile number (01xxxxxxxxx)');
+
+    const isWallet = $('cPay').value === 'wallet';
+    let proof = '';
+    if (isWallet) {
+      const f = $('cProof').files[0];
+      if (!f) return toast('Please upload payment screenshot');
+      proof = await resize(f);
+    }
+
+    const btn = $('orderBtn');
+    btn.disabled = true;
+    try {
+      let discount = null;
+      const subTotal = its.reduce((s, i) => s + i.price * i.qty, 0);
+      if (applied) {
+        const pk = phoneKey(val('cPhone'));
+        if (!pk) { btn.disabled = false; return toast('Enter a valid phone number to use the discount'); }
+        const r = await fetchDiscount(applied.code);
+        if (r.err) { applied = null; renderCart(); dmsg(r.err, false); btn.disabled = false; return toast(r.err); }
+        const claim = await runTransaction(ref(db, 'discountUses/' + applied.code + '/' + pk), cur => cur ? undefined : { at: Date.now() });
+        if (!claim.committed) { applied = null; renderCart(); dmsg('You already used this code', false); btn.disabled = false; return toast('You already used this code'); }
+        discount = { code: applied.code, percent: r.d.percent, amount: discAmount(subTotal, r.d.percent) };
+      }
+      const rnd = Array.from(crypto.getRandomValues(new Uint8Array(10)), b => 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[b % 32]).join('');
+      const code = 'ORD-' + rnd, at = Date.now();
+      const ship = shipFor(val('cCity'), subTotal - (discount ? discount.amount : 0));
+      const total = subTotal - (discount ? discount.amount : 0) + ship;
+      const addr = {
+        city: val('cCity').slice(0, 100),
+        area: areaVal().slice(0, 100),
+        street: val('cStreet').slice(0, 150),
+        bName: val('cBName').slice(0, 100),
+        bNo: val('cBNo').slice(0, 50),
+        floor: val('cFloor').slice(0, 50),
+        apt: val('cApt').slice(0, 50),
+        notes: val('cNotes').slice(0, 300)
+      };
+      const orderData = { code, name: val('cName').slice(0, 100), phone: phoneEg, email: val('cEmail').slice(0, 120), addr, pay: $('cPay').value, proof, items: its, total, ship, status: 'placed', at, ...(cu ? { uid: cu.uid } : {}) };
+      if (discount) orderData.discount = discount;
+
+      await set(ref(db, 'orders/' + code), orderData);
+      await set(ref(db, 'tracking/' + code), { code, status: 'placed', total, ship, at, ...(discount ? { discount } : {}), items: its.map(i => ({ name: i.name, price: i.price, qty: i.qty })) });
+
+      remember(code);
+      saveCust();
+      cart = {};
+      applied = null;
+      if ($('dCode')) $('dCode').value = '';
+      renderCart();
+
+      ['cNotes', 'cBName', 'cApt', 'cFloor', 'cBNo', 'cCity', 'cStreet', 'cName', 'cPhone', 'cEmail', 'cProof'].forEach(i => {
+        if ($(i)) $(i).value = '';
+      });
+      $('cPay').value = 'cod';
+      togglePayProof();
+      fillAreas(); $('cAreaOther').value = ''; loadCust();
+
+      lastCode = code;
+      its.forEach(i => { const p = products.find(x => x.id === i.pid); if (p && typeof p.stock === 'number') runTransaction(ref(db, 'products/' + i.pid + '/stock'), c => typeof c === 'number' ? Math.max(0, c - i.qty) : undefined).catch(() => {}); });
+      if (/^https:\/\/script\.google\.com\//.test(cfg.notifyUrl || '')) fetch(cfg.notifyUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ code }) }).catch(() => {});
+      const dc = $('doneCode');
+      if (dc) dc.textContent = code;
+      openModal('done');
+    } catch (e) {
+      console.error(e);
+      toast('Error placing order: ' + (e.code || e.message));
+    }
+    btn.disabled = false;
+  };
+
+  window.copyCode = function() {
+    try {
+      navigator.clipboard.writeText(lastCode);
+      toast('Copied ✅');
+    } catch (e) { toast(lastCode); }
+  };
+
+  window.goToTrack = function() {
+    closeModal('done');
+    window.switchView('mine');
+  };
+
+  window.addItem = async function() {
+    const name = val('pName'), price = parseFloat($('pPrice').value);
+    if (!name || isNaN(price)) return toast('Enter name and price');
+    const btn = $('addBtn');
+    btn.disabled = true;
+    try {
+      const files = Array.from($('pImg').files).slice(0, 6), imgs = [];
+      for (const f of files) imgs.push(await resize(f));
+      const th = files[0] ? await resize(files[0], 320) : '';
+      const nr = push(ref(db, 'products'));
+      if (imgs.length) await set(ref(db, 'productImages/' + nr.key), imgs);
+      await set(nr, { name: name.slice(0, 150), price, desc: val('pDesc').slice(0, 2000), img: th, n: imgs.length, cat: val('pCat').slice(0, 40), ...(val('pStock') !== '' && Number(val('pStock')) >= 0 ? { stock: Math.min(100000, Math.floor(Number(val('pStock')))) } : {}), at: Date.now() });
+      ['pName', 'pPrice', 'pDesc', 'pCat', 'pStock', 'pImg'].forEach(i => { if ($(i)) $(i).value = ''; });
+      $('pPrev').innerHTML = '';
+      toast('Item added ✅');
+    } catch (e) {
+      console.error(e);
+      toast('Error adding item: ' + (e.code || e.message));
+    }
+    btn.disabled = false;
+  };
+
+  window.delItem = async function(id) {
+    if (confirm('Delete this item?')) {
+      try {
+        await remove(ref(db, 'products/' + id));
+        await remove(ref(db, 'productImages/' + id)).catch(() => {});
+        toast('Item deleted');
+      } catch (e) {
+        toast('Error deleting item: ' + e.message);
+      }
+    }
+  };
+
+  window.setStatus = async function(code, s) {
+    try {
+      await update(ref(db), { ['orders/' + code + '/status']: s, ['tracking/' + code + '/status']: s });
+      toast('Status updated ✅');
+      if (s === 'delivered') await awardStamp(code);
+    } catch (e) {
+      toast('Error updating status');
+    }
+  };
+
+  window.delOrder = async function(code) {
+    if (confirm('Delete order permanently?')) {
+      try {
+        await update(ref(db), { ['orders/' + code]: null, ['tracking/' + code]: null });
+        toast('Order deleted');
+      } catch (e) {
+        toast('Error deleting order');
+      }
+    }
+  };
+
+  onValue(ref(db, 'products'), s => {
+    const v = s.val() || {};
+    products = Object.keys(v).map(k => Object.assign({ id: k }, v[k])).sort((a, b) => b.at - a.at);
+    renderShop();
+    renderCart();
+  }, e => {
+    console.error(e);
+    toast('Database error: ' + (e.code || e.message));
+  });
+
+  saved().forEach(watch);
+
+  let online = false;
+  onValue(ref(db, '.info/connected'), x => {
+    online = x.val() === true;
+    const n = $('net');
+    if (n) {
+      n.textContent = online ? '● Live & Connected' : '● Offline';
+      n.style.color = online ? '#7ee2a8' : '#ff8f8f';
+    }
+  });
+
+  // ---- Arabic / English (added) ----
+  const AR = {"Shop": "المتجر", "Cart": "السلة", "Cart (": "السلة (", "My orders": "طلباتي", "Complaints": "الشكاوى", "Add to cart": "أضف للسلة", "Sold out": "نفدت الكمية", "Your cart": "سلة المشتريات", "Cart is empty.": "السلة فاضية.", "Apply": "تطبيق", "Delivery Fee": "مصاريف الشحن", "Free": "مجاني", "Checkout": "إتمام الطلب", "Full name *": "الاسم بالكامل *", "Phone number *": "رقم الموبايل *", "Email (Optional)": "الإيميل (اختياري)", "Delivery address": "عنوان التوصيل", "City / Governorate *": "المحافظة *", "Select city…": "اختر المحافظة…", "Area / District *": "المنطقة *", "Select city first": "اختر المحافظة أولاً", "Select area…": "اختر المنطقة…", "Other (write it)": "أخرى (اكتبها)", "Write your area below": "اكتب منطقتك تحت", "Write your area *": "اكتب منطقتك *", "Street *": "الشارع *", "Building Name": "اسم العمارة", "Building No *": "رقم العمارة *", "Floor *": "الدور *", "Apt *": "الشقة *", "Delivery Notes": "ملاحظات التوصيل", "Payment Method *": "طريقة الدفع *", "Cash on Delivery (COD)": "الدفع عند الاستلام", "Vodafone Cash / InstaPay": "فودافون كاش / إنستاباي", "Transfer the total to:": "حوّل الإجمالي على:", "Upload Payment Screenshot *": "ارفع صورة التحويل *", "Place order": "تأكيد الطلب", "Track an order": "تتبع طلب", "Track": "تتبع", "Name *": "الاسم *", "Phone *": "الموبايل *", "Order code (optional)": "كود الطلب (اختياري)", "Your complaint *": "شكوتك *", "Send": "إرسال", "No items available yet.": "مفيش منتجات لسه.", "No matching items.": "مفيش نتايج.", "No orders tracked.": "مفيش طلبات متتبعة.", "🎉 Order Placed!": "🎉 تم تسجيل طلبك!", "Your tracking code:": "كود التتبع بتاعك:", "Copy Code": "انسخ الكود", "Track Order": "تتبع الطلب", "📲 Send order on WhatsApp": "📲 ابعت الطلب على واتساب", "Contact us": "تواصل معنا", "Return & Privacy policy": "سياسة الاسترجاع والخصوصية", "Close": "إغلاق", "Placed": "تم الطلب", "Confirmed": "تم التأكيد", "Shipped": "تم الشحن", "Out for delivery": "خرج للتوصيل", "Delivered": "تم التسليم", "Cancelled": "ملغي", "Return requested": "طلب استرجاع", "Return approved": "تم قبول الاسترجاع", "Return rejected": "تم رفض الاسترجاع", "↩ Request a return": "↩ اطلب استرجاع", "● Connecting...": "● جاري الاتصال...", "● Live & Connected": "● متصل", "● Offline": "● غير متصل", "Added to cart 🛒": "تمت الإضافة للسلة 🛒", "Cart is empty": "السلة فاضية", "Please fill all required fields (*)": "من فضلك املا كل الخانات المطلوبة (*)", "Please upload payment screenshot": "من فضلك ارفع صورة التحويل", "Order added ✅": "تمت إضافة الطلب ✅", "Order not found": "الطلب مش موجود", "Complaint sent, we will contact you ✅": "تم إرسال الشكوى، هنتواصل معاك ✅", "Please fill name, phone and complaint": "من فضلك اكتب الاسم والموبايل والشكوى", "Return request sent ✅": "تم إرسال طلب الاسترجاع ✅", "Copied ✅": "تم النسخ ✅", "Enter a valid Egyptian mobile number (01xxxxxxxxx)": "اكتب رقم موبايل مصري صحيح (01xxxxxxxxx)", "Invalid code": "الكود غير صحيح", "This code has expired": "الكود منتهي", "You already used this code": "استخدمت الكود ده قبل كده", "Enter a code": "اكتب الكود", "Your cart is empty": "السلة فاضية", "Enter your phone number in Checkout first": "اكتب رقم موبايلك في إتمام الطلب الأول", "Search products...": "ابحث عن منتج...", "Enter discount code": "اكتب كود الخصم", "Landmark, etc.": "علامة مميزة، إلخ", "No more stock available": "الكمية المتاحة خلصت", "Not enough stock for some items": "الكمية المطلوبة مش متوفرة لبعض المنتجات"};
+  const PRE = {"Delivery Fee:": "مصاريف الشحن:", "Total:": "الإجمالي:", "Delivery:": "الشحن:"};
+  Object.assign(AR, {"⭐ Dot": "⭐ دوت", "Dot": "دوت", "⭐ Dot Rewards": "⭐ مكافآت دوت", "Show my card": "اعرض بطاقتي", "Phone number (the one you order with)": "رقم الموبايل (اللي بتطلب بيه)", "Your reward codes": "أكواد المكافآت بتاعتك", "No active reward codes yet.": "مفيش أكواد مكافآت لسه.", "Paste the code in your cart to use it.": "الصق الكود في السلة علشان تستخدمه.", "⭐ Dot loyalty rules": "⭐ قواعد دوت للولاء", "Save Dot rules": "حفظ قواعد دوت", "First reward at stamp #": "المكافأة الأولى عند ختم رقم", "First reward discount %": "نسبة خصم المكافأة الأولى %", "Second reward at stamp # (card then restarts)": "المكافأة الثانية عند ختم رقم (وبعدها البطاقة تبدأ من جديد)", "Second reward discount %": "نسبة خصم المكافأة الثانية %", "Reward code valid for (days)": "صلاحية كود المكافأة (أيام)"});
+  Object.assign(AR, {"Admin ON": "الأدمن مفتوح", "Admin LOCKED": "الأدمن مقفول", "Switch off to lock the admin panel": "اقفل المفتاح علشان تقفل لوحة الأدمن", "Remember me": "تذكرني", "Forgot password?": "نسيت الباسورد؟", "Sign In": "تسجيل الدخول", "Sign Up": "إنشاء حساب", "Or With": "أو باستخدام", "Email": "الإيميل", "Password": "الباسورد", "Full name": "الاسم بالكامل", "Enter your Email": "اكتب إيميلك", "Enter your Password": "اكتب الباسورد", "Enter your name": "اكتب اسمك", "Already have an account?": "عندك حساب؟", "Don't have an account?": "معندكش حساب؟"});
+  Object.assign(AR, {"🚪 Log out": "🚪 تسجيل الخروج", "Log out": "تسجيل الخروج", "👤 Sign in": "👤 تسجيل الدخول", "Verify OTP": "تأكيد الكود", "Verify & Proceed →": "تأكيد ومتابعة ←", "Verifying Code...": "جاري التحقق...", "Resend code": "إعادة إرسال الكود", "Didn't receive the code?": "ماوصلكش الكود؟", "Use another account": "استخدم حساب تاني", "👥 Sign-ups": "👥 التسجيلات", "Email OTP service link (Dot, Google Apps Script)": "رابط خدمة كود الإيميل (Dot، Google Apps Script)"});
+  let lang = 'en'; try { lang = localStorage.getItem('lang') === 'ar' ? 'ar' : 'en'; } catch (e) {}
+  const origT = new WeakMap();
+  const tx = raw => { const k = raw.trim(); if (AR[k]) return raw.replace(k, AR[k]); let r = raw; for (const p in PRE) if (k.startsWith(p)) { r = r.replace(p, PRE[p]); break; } return r.replace(/\bEGP\b/g, 'ج.م'); };
+  const oneT = t => { if (t.parentNode && /^(SCRIPT|STYLE)$/.test(t.parentNode.nodeName)) return; const raw = origT.has(t) ? origT.get(t) : t.nodeValue; const out = lang === 'ar' ? tx(raw) : raw; if (out === t.nodeValue) return; if (!origT.has(t)) origT.set(t, raw); t.nodeValue = out; };
+  const applyT = root => {
+    if (root.nodeType === 3) return oneT(root);
+    if (root.nodeType !== 1) return;
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), arr = []; let t;
+    while ((t = w.nextNode())) arr.push(t);
+    arr.forEach(oneT);
+    root.querySelectorAll('[placeholder]').forEach(el => { if (!el.dataset.ph) el.dataset.ph = el.getAttribute('placeholder'); el.setAttribute('placeholder', lang === 'ar' && AR[el.dataset.ph] ? AR[el.dataset.ph] : el.dataset.ph); });
+  };
+  function setLang(l) {
+    lang = l; try { localStorage.setItem('lang', l); } catch (e) {}
+    document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+    const lb = $('langBtn'); if (lb) lb.textContent = l === 'ar' ? 'English' : 'العربية';
+    applyT(document.body);
+  }
+  window.toggleLang = () => setLang(lang === 'ar' ? 'en' : 'ar');
+  new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => { if (lang === 'ar') applyT(n); }))).observe(document.body, { childList: true, subtree: true });
+  setLang(lang);
+</script>
+</body>
+</html>
